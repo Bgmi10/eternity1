@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+body {
+    background-color: black;
+}
+
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 50px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #fff;
+    border-radius: 2px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #888;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #131314;
+    border-radius: 3px;
+  }
+
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;  
+  }
+
+  .navbar.scrolled {
+    background-color: #000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2)
+  }
+  @media screen and (orientation: landscape) {
+    .video-container {
+      width: 100vw;
+      height: 100vh;
+      max-width: 100%;
+      max-height: 100%;
+    }
+  } 

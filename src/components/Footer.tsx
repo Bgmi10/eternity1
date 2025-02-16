@@ -36,13 +36,13 @@ export default function Footer() {
 
                 {/* Footer Links Container */}
                 <motion.div 
-                    className="w-full grid sm: grid-cols-2 lg:grid-cols-none sm: flex-wrap lg:flex lg:flex-row gap-10 lg:gap-32 mb-16 lg:justify-start sm: justify-center"
+                    className="w-full grid sm:grid-cols-2 lg:grid-cols-none sm:flex-wrap lg:flex lg:flex-row gap-10 lg:gap-32 mb-16 lg:justify-start sm:justify-center"
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: "easeInOut", delay: 0.3 }}
                     viewport={{ once: true }}
                 >
-                    <div className="flex flex-col items-start lg:items-start lg:order-first order-last">
+                    <div className="flex flex-col items-center sm:col-span-2 lg:col-span-1 lg:items-start lg:order-first order-last">
                         <span className="text-[#33C3A5] font-medium text-[16px] mb-4 font-['Asap_Condensed'] tracking-[0.01rem]">
                             Our Apps
                         </span>
@@ -53,6 +53,7 @@ export default function Footer() {
                     </div>
 
                     {/* Useful Links */}
+                   <div className="sm: grid sm: grid-cols-2 gap-10 lg:flex lg:gap-32"> 
                     <div className="flex flex-col items-start">
                         <span className="text-[#33C3A5] font-medium text-[16px] mb-4 font-['Asap_Condensed'] tracking-[0.01rem]">
                             Useful Links
@@ -106,6 +107,7 @@ export default function Footer() {
                                 </span>
                             ))}
                         </div>
+                    </div>
                     </div>
                 </motion.div>
 

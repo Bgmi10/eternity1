@@ -81,7 +81,7 @@ export default function Slider() {
                 spaceBetween={30}
                 slidesPerView={1}
                 loop={true}
-                autoplay={{ delay: 3000, disableOnInteraction: false }}
+                //autoplay={{ delay: 3000, disableOnInteraction: false }}
                 centeredSlides={true}
                 coverflowEffect={{
                     rotate: 10,
@@ -96,16 +96,24 @@ export default function Slider() {
                 {sliderData.map((item) => (
                     <SwiperSlide key={item.objectId} className="relative">
                         <div className="relative w-full h-[500px] md:h-[600px] lg:h-[700px] overflow-hidden rounded-lg shadow-lg">
-                            <motion.img
+                            {/* <motion.img
                                 key={`backdrop-${activeIndex}`}
                                 src={item.backdropURL}
                                 initial={{ scale: 1.2, opacity: 0 }}
                                 animate={{ scale: 1, opacity: 1 }}
                                 transition={{ duration: 0.8, ease: "easeOut" }}
                                 className="w-full h-full object-cover brightness-50"
-                            />
+                            /> */}
+                            <div className="relative w-full h-[1000px] overflow-hidden -mt-[208px]">
+                                <iframe
+                                    src={`https://www.youtube.com/embed/${item?.TrailerId}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&vq=hd1080&mute=1&playsinline=1&loop=1`}
+                                    allow="autoplay; encrypted-media"
+                                    allowFullScreen
+                                    className="absolute top-0 left-0 w-full h-[1000px] object-cover"
+                                />
+                            </div>
                             <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black opacity-100"></div>
-                            <div className="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
+                            <div className="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-black via-black/90 to-transparent"></div>
 
                             <div className="absolute top-30 left-10 flex space-x-6">
                                 <motion.img

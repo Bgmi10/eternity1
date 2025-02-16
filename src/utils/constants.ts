@@ -13,6 +13,7 @@
             "storyline": "Kraven Kravinoff's complex relationship with his ruthless gangster father, Nikolai, starts him down a path of vengeance with brutal consequences, motivating him to become not only the greatest hunter in the world, but also one of its most feared.",
             "rating": "6.3",
             "tmdbId": 539972,
+            TrailerId: "rze8QYwWGMs",
             "embedLinks": {
                 "upnshare": "nszor",
                 "streamruby": "0t3d9ymhsbzc",

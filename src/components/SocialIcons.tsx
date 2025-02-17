@@ -17,7 +17,7 @@ const SocialIcons = () => {
         <div className="w-4 h-4 flex items-center justify-center rounded-full">
           <FaXTwitter className="text-[#1DBBFF] text-xl" />
         </div>
-        <span className="font-bold text-blue-400 font-oswald">Twitter</span>
+        <span className="font-bold text-blue-400 font-oswald">X.com</span>
       </div>
 
       {/* YouTube */}

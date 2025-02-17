@@ -5,7 +5,7 @@ export default function Footer() {
     return (
         <div className="bg-black mt-10">
             <motion.div 
-                className="max-w-[1440px] mx-auto px-5 lg:px-20 flex flex-col items-center"
+                className="mx-auto px-5 lg:px-20 flex flex-col items-center"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeInOut" }}
@@ -110,7 +110,7 @@ export default function Footer() {
                     </div>
                     </div>
                 </motion.div>
-                <div className="mx-10 w-[calc(110%+2rem)] h-px bg-[#555555] mb-2"></div>
+                <div className="lg:w-[calc(110%+2rem)] sm: w-[calc(100%+2rem)] h-px bg-[#555555] mb-2"></div>
                 <motion.div 
                     className="mb-4 flex lg:flex-row justify-between sm: flex-col lg:gap-52 sm: gap-2 items-center"
                     initial={{ opacity: 0 }}

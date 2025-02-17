@@ -1,21 +1,33 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";  
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaGem } from "react-icons/fa";
 
 export default function Header() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [isScroll, setIsScroll] = useState(false);
+
+    console.log(isScroll);
+    const handleScroll = () => {
+        const isScrollFromTop = window.scrollY > 0;
+        setIsScroll(isScrollFromTop);
+    }
+
+    useEffect(() => {
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [])
 
     return (
-        <div className="flex justify-between p-4 z-50 fixed top-0 left-0 right-0 items-center w-full bg-gradient-to-b from-black/1 to-transparent">
+        <div className={`flex justify-between p-4 z-50 fixed top-0 left-0 right-0 items-center w-full ${isScroll ? " bg-gradient-to-b from-black/20 backdrop-blur-lg border-b border-white" : ""}`}>
             <div className="flex items-center">
-                <span className="text-4xl font-bold text-white">
+                <span className="lg:text-4xl sm: text-3xl font-bold text-white">
                     <span className="text-[#E50914]">ER</span> Flix
                 </span>
-                <span className="text-[#E50914] text-5xl font-extrabold">🎬</span>
+                <span className="text-[#E50914] lg:text-4xl sm: text-3xl font-extrabold">🎬</span>
             </div>
-            <div className="flex items-center gap-8 text-white font-semibold">
+            <div className="lg:flex items-center gap-8 text-white font-semibold sm: hidden">
                 <div 
                     className="flex gap-2 items-center hover:text-red-500 relative cursor-pointer"
                     onMouseEnter={() => setIsDropdownOpen(true)}
@@ -58,8 +70,8 @@ export default function Header() {
                 </div>
             </div>
             <div className="items-center flex">
-              <button className="relative flex items-center gap-2 bg-[#E50914] cursor-pointer p-2 rounded-xl text-white font-bold px-12 text-lg transition-all duration-300 hover:shadow-[0_0_20px_rgba(229,9,20,0.7)]">
-                 <FaGem className="text-white text-xl" />
+              <button className="relative flex items-center gap-2 bg-[#E50914] cursor-pointer p-2 rounded-xl text-white font-bold lg:px-12 lg:text-lg px-5 text-md transition-all duration-300 hover:shadow-[0_0_20px_rgba(229,9,20,0.7)]">
+                 <FaGem className="text-white lg:text-xl sm: text-lg" />
                  Donate
                </button>
             </div>

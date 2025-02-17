@@ -1,5 +1,4 @@
 import { FaInfo } from "react-icons/fa";
-import { Sparkles } from "./ui/Sparkles";
 
 export default function EternityReady() {
   return (

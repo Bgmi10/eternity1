@@ -13,7 +13,7 @@
             "storyline": "Kraven Kravinoff's complex relationship with his ruthless gangster father, Nikolai, starts him down a path of vengeance with brutal consequences, motivating him to become not only the greatest hunter in the world, but also one of its most feared.",
             "rating": "6.3",
             "tmdbId": 539972,
-            TrailerId: "rze8QYwWGMs",
+            trailerId: "rze8QYwWGMs",
             "embedLinks": {
                 "upnshare": "nszor",
                 "streamruby": "0t3d9ymhsbzc",
@@ -35,6 +35,7 @@
         },
         {
             "objectId": "gCWfM3qenC",
+            trailerId: "jDO7clVUess",
             "name": "The Smile Man",
             "posterURL": "https://image.tmdb.org/t/p/original/jBEnBBDyAdwN1MGdhW3FK9WwDbH.jpg",
             "releaseYear": 2024,
@@ -254,6 +255,7 @@
         {
             "objectId": "5CDaBROniQ",
             "name": "Gladiator II",
+            "trailerId" : "4rgYUipGJNo",
             "posterURL": "https://image.tmdb.org/t/p/original/2cxhvwyEwRlysAmRH4iodkvo0z5.jpg",
             "releaseYear": 2024,
             "backdropURL": "https://image.tmdb.org/t/p/original/4hvK1uenpT7VVClzoNqXanvgdjX.jpg",

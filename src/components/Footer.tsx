@@ -3,7 +3,7 @@ import SocialIcons from "./SocialIcons";
 
 export default function Footer() {
     return (
-        <div className="bg-black mt-20">
+        <div className="bg-black mt-10">
             <motion.div 
                 className="max-w-[1440px] mx-auto px-5 lg:px-20 flex flex-col items-center"
                 initial={{ opacity: 0, y: 50 }}

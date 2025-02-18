@@ -110,7 +110,6 @@ export default function Footer() {
                     </div>
                     </div>
                 </motion.div>
-                <div className="lg:w-[calc(110%+2rem)] sm: w-[calc(100%+2rem)] h-px bg-[#555555] mb-2"></div>
                 <motion.div 
                     className="mb-4 flex lg:flex-row justify-between sm: flex-col lg:gap-52 sm: gap-2 items-center"
                     initial={{ opacity: 0 }}

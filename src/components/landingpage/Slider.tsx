@@ -10,6 +10,7 @@ import { motion } from "framer-motion";
 import { sliderData } from "../../utils/constants";
 import { Bookmark, Play, Volume2, VolumeOffIcon } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
+import { FaBookmark, FaPlay } from "react-icons/fa";
 
 export default function Slider() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -216,33 +217,36 @@ export default function Slider() {
                   >
                     {item.name}
                   </motion.h3> */}
-                  <motion.span
-                    key={`storyline-${activeIndex}`}
-                    className="line-clamp-2 w-1/2 text-gray-200 font-medium lg:text-xl sm: text-sm sm: hidden lg:block"
-                    variants={textVariants}
-                    initial="hidden"
-                    animate="visible"
-                    transition={{ delay: 0.2 }}
-                  >
-                    {item.storyline}
-                  </motion.span>
-                      
+                  <div className="sm: hidden lg:block">
+                      <motion.span
+                        key={`storyline-${activeIndex}`}
+                        className="w-1/2 text-gray-200 font-medium lg:text-xl sm: text-sm line-clamp-2"
+                        variants={textVariants}
+                        initial="hidden"
+                        animate="visible"
+                        transition={{ delay: 0.2 }}
+                      >
+                        {item.storyline}
+                      </motion.span>
+                  </div>
                   <motion.div className="w-fit flex gap-3" key={`button-${activeIndex}`}
-  variants={buttonVariants}
-  initial="hidden"
-  animate="visible"
-  transition={{ delay: 0.3 }}
+    variants={buttonVariants}
+    initial="hidden"
+    animate="visible"
+    transition={{ delay: 0.3 }}
 >
-  <motion.button
-    className="bg-[#E50914] items-center lg:text-xl sm:text-lg text-sm cursor-pointer p-2 text-white rounded-xl lg:px-6 font-semibold flex gap-2 backdrop-filter backdrop-opacity-10"
-  >
-    Watch Now <Play fill="white" />
-  </motion.button>
-  <motion.button className="text-gray-950 p-3 rounded-full bg-white cursor-pointer">
-    <Bookmark className="font-bold sm:text-xl md:text-2xl text-lg" size={30} strokeWidth={3} />
-  </motion.button>
-</motion.div>
+    {/* Watch Now Button */}
+    <motion.button
+        className="bg-[#E50914] items-center text-sm sm:text-base lg:text-xl cursor-pointer text-white rounded-md px-3 sm:px-4 font-semibold flex gap-2 backdrop-filter backdrop-opacity-10"
+    >
+        Watch Now <FaPlay className="text-sm sm:text-base lg:text-lg" />
+    </motion.button>
 
+    {/* Bookmark Button */}
+    <motion.button className="text-gray-950 p-2 sm:p-3 rounded-full bg-white cursor-pointer">
+        <FaBookmark className="text-base sm:text-lg lg:text-2xl" />
+    </motion.button>
+</motion.div>
                 </div>
               </div>
             </div>

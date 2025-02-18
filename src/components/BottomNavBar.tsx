@@ -1,13 +1,14 @@
 import { motion } from "framer-motion";
-import { FaFilm, FaTv, FaPodcast } from "react-icons/fa";
+import { FaFilm, FaTv, FaPodcast, FaMusic } from "react-icons/fa";
 import { FaRadio } from "react-icons/fa6";
 
 export default function BottomNavBar() {
   const menuItems = [
-    { name: "Movies", icon: <FaFilm /> },
-    { name: "TV Series", icon: <FaTv /> },
-    { name: "Podcasts", icon: <FaPodcast /> },
-    { name: "Radio", icon: <FaRadio /> },
+    { name: "", icon: <FaFilm /> },
+    { name: "", icon: <FaTv /> },
+    { name: "", icon: <FaPodcast /> },
+    { name: "", icon: <FaRadio /> },
+    { name: "", icon: <FaMusic />}
   ];
 
   return (
@@ -20,7 +21,7 @@ export default function BottomNavBar() {
       {menuItems.map((item, index) => (
         <motion.div
           key={index}
-          className="flex flex-col items-center text-sm cursor-pointer"
+          className="flex flex-col items-center text-sm cursor-pointer "
           whileHover={{ scale: 1.1, y: -5 }}
           transition={{ type: "spring", stiffness: 300 }}
         >

@@ -16,12 +16,12 @@ export default function Header() {
     useEffect(() => {
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
-    }, [])
+    }, [])  
 
     return (
         <div className={`flex justify-between p-4 z-50 fixed top-0 left-0 right-0 items-center w-full  bg-gradient-to-b from-black/70 ${isScroll ? "  backdrop-blur-2xl" : ""}`}>
             <div className="flex items-center">
-                <div className="lg:text-2xl sm: text-3xl font-semibold text-white gap-1 flex">
+                <div className="lg:text-2xl sm: text-xl font-semibold text-white gap-1 flex">
                     <span className="text-[#E50914]">ETERNITY</span>
                     <span className="text-white">READY</span>
                 </div>

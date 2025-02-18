@@ -168,7 +168,7 @@ export default function Slider() {
       >
         {sliderData.map((item) => (
           <SwiperSlide key={item.objectId} className="relative">
-            <div className="relative w-full h-[800px] md:h-[600px] lg:h-[700px] overflow-hidden rounded-lg shadow-lg">
+            <div className="relative w-full md:h-[600px] lg:h-[700px] overflow-hidden shadow-lg sm: mt-20 lg:mt-0">
               {/* Backdrop Image */}
               {!isVideoLoaded && (
                 <motion.img
@@ -189,9 +189,9 @@ export default function Slider() {
                 />
               </div>  */}
               <div className="absolute bottom-0 w-full h-full bg-gradient-to-r from-black via-black/30 to-transparent"></div>
-              <div className="absolute bottom-0 w-full h-full bg-gradient-to-t from-black via-black/10 to-transparent"></div>
+              <div className="absolute bottom-0 w-full h-full bg-gradient-to-t from-black via-black/10 to-transparent sm: hidden lg:block"></div>
               {/* Slide Content */}
-              <div className="absolute flex top-70 gap-5 left-10 lg:flex-row sm: flex-col space-x-6">
+              <div className="absolute flex lg:top-70 sm: top-20 lg:gap-5 sm: gap-2 left-10 lg:flex-row space-x-6">
                 <div className="sm: hidden  lg:block absolute -top-45 right-5 text-gray-600 mt-3 z-40 rounded-full backdrop-blur-lg p-2" onClick={toggleMute}>
                   {isMute ? (
                     <VolumeOffIcon size={40} strokeWidth={3} className="cursor-pointer" />
@@ -199,13 +199,13 @@ export default function Slider() {
                     <Volume2 size={40} strokeWidth={3} className="cursor-pointer" />
                   )}
                 </div>
-                <div className="flex flex-col gap-8">
-                  <motion.div className="gap-4 flex flex-col"  variants={posterVariants}
+                <div className="flex flex-col lg:gap-8 sm: gap-3">
+                  <motion.div className="lg:gap-4 sm: gap-2 flex flex-col"  variants={posterVariants}
                   key={`movie-${activeIndex}`} 
                     initial="hidden"
                     animate="visible">
-                    <motion.img src={item.titleImage} className="w-80 h-32"  />
-                    <span className="text-teal-400 font-bold">{item.label}</span>
+                    <motion.img src={item.titleImage} className="lg:w-80 lg:h-32 sm: w-32 sm: h-10"  />
+                    <span className="text-teal-400 font-bold sm: text-xs lg:text-lg">{item.label}</span>
                   </motion.div>
                   {/* <motion.h3
                     key={`title-${activeIndex}`}
@@ -218,7 +218,7 @@ export default function Slider() {
                   </motion.h3> */}
                   <motion.span
                     key={`storyline-${activeIndex}`}
-                    className="line-clamp-2 w-1/2 text-gray-200 font-medium lg:text-xl sm: text-sm"
+                    className="line-clamp-2 w-1/2 text-gray-200 font-medium lg:text-xl sm: text-sm sm: hidden lg:block"
                     variants={textVariants}
                     initial="hidden"
                     animate="visible"
@@ -227,28 +227,29 @@ export default function Slider() {
                     {item.storyline}
                   </motion.span>
                       
-                  <motion.div className="w-fit flex gap-3"  key={`button-${activeIndex}`} 
-                    variants={buttonVariants}
-                    initial="hidden"
-                    animate="visible"
-                    transition={{ delay: 0.3 }}
-                    >
-                    <motion.button
-                      className="bg-[#E50914] items-center lg:text-xl sm:text-md cursor-pointer p-2 text-white rounded-xl lg:px-6 font-semibold flex gap-2 backdrop-filter backdrop-opacity-10"
-                    >
-                      Watch Now <Play fill="white" />
-                    </motion.button>
-                    <motion.button className="text-gray-950 p-3 rounded-full bg-white cursor-pointer">
-                      <Bookmark className=" font-bold text-2xl" size={30} strokeWidth={3}/>
-                    </motion.button>
-                  </motion.div>
+                  <motion.div className="w-fit flex gap-3" key={`button-${activeIndex}`}
+  variants={buttonVariants}
+  initial="hidden"
+  animate="visible"
+  transition={{ delay: 0.3 }}
+>
+  <motion.button
+    className="bg-[#E50914] items-center lg:text-xl sm:text-lg text-sm cursor-pointer p-2 text-white rounded-xl lg:px-6 font-semibold flex gap-2 backdrop-filter backdrop-opacity-10"
+  >
+    Watch Now <Play fill="white" />
+  </motion.button>
+  <motion.button className="text-gray-950 p-3 rounded-full bg-white cursor-pointer">
+    <Bookmark className="font-bold sm:text-xl md:text-2xl text-lg" size={30} strokeWidth={3} />
+  </motion.button>
+</motion.div>
+
                 </div>
               </div>
             </div>
           </SwiperSlide>
         ))} 
 
-        <div className="absolute bottom-20 w-full flex justify-center gap-2 z-50">
+        <div className="absolute lg:bottom-20 sm: bottom-2 w-full flex justify-center gap-2 z-50">
           {sliderData.map((_, index) => (
             <motion.div
               key={index}

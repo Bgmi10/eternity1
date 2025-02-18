@@ -3,7 +3,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectCoverflow, Pagination } from "swiper/modules";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaBookmark, FaPlay } from "react-icons/fa";
-import { Volume2, VolumeX } from "lucide-react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
@@ -28,6 +27,7 @@ interface YouTubePlayer {
 
 export default function Slider({ data }: { data: SliderData[] }) {
   const [activeIndex, setActiveIndex] = useState(0);
+  //@ts-ignore
   const [isMuted, setIsMuted] = useState(true);
   const [isYTReady, setIsYTReady] = useState(false);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
@@ -99,16 +99,7 @@ export default function Slider({ data }: { data: SliderData[] }) {
     }
   };
 
-  const toggleMute = () => {
-    if (!playerRef.current) return;
-    if (isMuted) {
-      playerRef.current.unMute();
-      setIsMuted(false);
-    } else {
-      playerRef.current.mute();
-      setIsMuted(true);
-    }
-  };
+
 
   return (
     <div className="relative w-full h-full overflow-hidden">

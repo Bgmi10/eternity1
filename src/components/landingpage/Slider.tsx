@@ -3,8 +3,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectCoverflow, Pagination } from "swiper/modules";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaBookmark, FaPlay } from "react-icons/fa";
+//@ts-ignore
 import "swiper/css";
+//@ts-ignore
 import "swiper/css/effect-coverflow";
+//@ts-ignore
 import "swiper/css/pagination";
 import { sliderData } from "../../utils/constants";
 
@@ -25,7 +28,7 @@ interface YouTubePlayer {
   playVideo: () => void;
 }
 
-export default function Slider({ data }: { data: SliderData[] }) {
+export default function Slider() {
   const [activeIndex, setActiveIndex] = useState(0);
   //@ts-ignore
   const [isMuted, setIsMuted] = useState(true);

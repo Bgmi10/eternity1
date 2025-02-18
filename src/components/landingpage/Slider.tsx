@@ -8,7 +8,7 @@ import "swiper/css/navigation";
 import "swiper/css/effect-coverflow";
 import { motion } from "framer-motion";
 import { sliderData } from "../../utils/constants";
-import { Play, Volume2, VolumeOffIcon } from "lucide-react";
+import { Bookmark, Play, Volume2, VolumeOffIcon } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 
 export default function Slider() {
@@ -125,18 +125,6 @@ export default function Slider() {
     },
   };
 
-  const languageVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: (index: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        delay: 0.1 * index,
-        ease: "easeOut",
-      },
-    }),
-  };
 
   const buttonVariants = {
     hidden: { opacity: 0, scale: 0.8 },
@@ -189,34 +177,22 @@ export default function Slider() {
                   initial={{ scale: 1.2, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ duration: 0.8, ease: "easeOut" }}
-                  className="w-full h-full object-cover brightness-50"
+                  className="w-full h-full object-cover"
                 />
               )}
 
-                 <div className="absolute inset-0 w-full h-full mt-[-80px] sm: hidden lg:block">
+                 {/* <div className="absolute inset-0 w-full h-full mt-[-80px] sm: hidden lg:block">
                 <div
                   id={`youtube-player-${item.objectId}`}
                   ref={iframeRef}
                   className="absolute inset-0 w-full h-full"
                 />
-              </div> 
-
-              {/* Video Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black opacity-100"></div>
-              <div className="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-black via-black/90 to-transparent"></div>
-
+              </div>  */}
+              <div className="absolute bottom-0 w-full h-full bg-gradient-to-r from-black via-black/30 to-transparent"></div>
+              <div className="absolute bottom-0 w-full h-full bg-gradient-to-t from-black via-black/10 to-transparent"></div>
               {/* Slide Content */}
-              <div className="absolute flex top-30 gap-5 left-10 lg:flex-row sm: flex-col space-x-6">
-                <motion.img
-                  key={`poster-${activeIndex}`}
-                  src={item.posterURL}
-                  alt={item.name}
-                  className="lg:w-80 sm: w-32 rounded-3xl shadow-2xl object-cover"
-                  variants={posterVariants}
-                  initial="hidden"
-                  animate="visible"
-                />
-                <div className="sm: hidden  lg:block absolute right-10 text-white mt-3 z-40" onClick={toggleMute}>
+              <div className="absolute flex top-70 gap-5 left-10 lg:flex-row sm: flex-col space-x-6">
+                <div className="sm: hidden  lg:block absolute -top-45 right-5 text-gray-600 mt-3 z-40 rounded-full backdrop-blur-lg p-2" onClick={toggleMute}>
                   {isMute ? (
                     <VolumeOffIcon size={40} strokeWidth={3} className="cursor-pointer" />
                   ) : (
@@ -224,7 +200,14 @@ export default function Slider() {
                   )}
                 </div>
                 <div className="flex flex-col gap-8">
-                  <motion.h3
+                  <motion.div className="gap-4 flex flex-col"  variants={posterVariants}
+                  key={`movie-${activeIndex}`} 
+                    initial="hidden"
+                    animate="visible">
+                    <motion.img src={item.titleImage} className="w-80 h-32"  />
+                    <span className="text-teal-400 font-bold">{item.label}</span>
+                  </motion.div>
+                  {/* <motion.h3
                     key={`title-${activeIndex}`}
                     className="text-white font-extrabold lg:text-6xl sm: text-3xl drop-shadow-lg"
                     variants={textVariants}
@@ -232,10 +215,10 @@ export default function Slider() {
                     animate="visible"
                   >
                     {item.name}
-                  </motion.h3>
+                  </motion.h3> */}
                   <motion.span
                     key={`storyline-${activeIndex}`}
-                    className="line-clamp-3 text-gray-200 font-stretch-50% lg:text-xl sm: text-sm"
+                    className="line-clamp-2 w-1/2 text-gray-200 font-medium lg:text-xl sm: text-sm"
                     variants={textVariants}
                     initial="hidden"
                     animate="visible"
@@ -243,32 +226,22 @@ export default function Slider() {
                   >
                     {item.storyline}
                   </motion.span>
-                  <div className="flex gap-2 flex-wrap">
-                    {item.languages.map((language, langIndex) => (
-                      <motion.span
-                        key={`${language}-${activeIndex}`}
-                        className="lg:text-xl text-md text-white rounded-xl lg:px-10 p-2 sm: px-6 font-bold backdrop-blur-2xl bg-gradient-to-b from-gray-800"
-                        variants={languageVariants}
-                        initial="hidden"
-                        animate="visible"
-                        custom={langIndex}
-                      >
-                        {language}
-                      </motion.span>
-                    ))}
-                  </div>
-                  <div className="w-fit">
+                      
+                  <motion.div className="w-fit flex gap-3"  key={`button-${activeIndex}`} 
+                    variants={buttonVariants}
+                    initial="hidden"
+                    animate="visible"
+                    transition={{ delay: 0.3 }}
+                    >
                     <motion.button
-                      key={`button-${activeIndex}`}
-                      className="bg-[#E50914] lg:text-xl sm: text-md cursor-pointer p-3 text-white rounded-xl lg:px-6 font-bold flex gap-2"
-                      variants={buttonVariants}
-                      initial="hidden"
-                      animate="visible"
-                      whileHover="hover"
+                      className="bg-[#E50914] items-center lg:text-xl sm:text-md cursor-pointer p-2 text-white rounded-xl lg:px-6 font-semibold flex gap-2 backdrop-filter backdrop-opacity-10"
                     >
                       Watch Now <Play fill="white" />
                     </motion.button>
-                  </div>
+                    <motion.button className="text-gray-950 p-3 rounded-full bg-white cursor-pointer">
+                      <Bookmark className=" font-bold text-2xl" size={30} strokeWidth={3}/>
+                    </motion.button>
+                  </motion.div>
                 </div>
               </div>
             </div>

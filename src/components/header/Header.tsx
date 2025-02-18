@@ -2,7 +2,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";  
 import { useEffect, useState } from "react";
-import { FaGem } from "react-icons/fa";
 
 export default function Header() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -20,12 +19,12 @@ export default function Header() {
     }, [])
 
     return (
-        <div className={`flex justify-between p-4 z-50 fixed top-0 left-0 right-0 items-center w-full ${isScroll ? " bg-gradient-to-b from-black/20 backdrop-blur-lg border-b border-white" : ""}`}>
+        <div className={`flex justify-between p-4 z-50 fixed top-0 left-0 right-0 items-center w-full  bg-gradient-to-b from-black/70 ${isScroll ? "  backdrop-blur-2xl" : ""}`}>
             <div className="flex items-center">
-                <span className="lg:text-4xl sm: text-3xl font-bold text-white">
-                    <span className="text-[#E50914]">ER</span> Flix
-                </span>
-                <span className="text-[#E50914] lg:text-4xl sm: text-3xl font-extrabold">🎬</span>
+                <div className="lg:text-2xl sm: text-3xl font-semibold text-white gap-1 flex">
+                    <span className="text-[#E50914]">ETERNITY</span>
+                    <span className="text-white">READY</span>
+                </div>
             </div>
             <div className="lg:flex items-center gap-8 text-white font-semibold sm: hidden">
                 <div 
@@ -70,8 +69,7 @@ export default function Header() {
                 </div>
             </div>
             <div className="items-center flex">
-              <button className="relative flex items-center gap-2 bg-[#E50914] cursor-pointer p-2 rounded-xl text-white font-bold lg:px-12 lg:text-lg px-5 text-md transition-all duration-300 hover:shadow-[0_0_20px_rgba(229,9,20,0.7)]">
-                 <FaGem className="text-white lg:text-xl sm: text-lg" />
+              <button className="relative flex items-center gap-2 bg-gradient-to-b from-red-500 to-red-600 cursor-pointer p-1 rounded-lg text-white font-semibold lg:px-4 lg:text-lg px-5 text-md transition-all duration-300 hover:shadow-[0_0_20px_rgba(229,9,20,0.7)]">
                  Donate
                </button>
             </div>

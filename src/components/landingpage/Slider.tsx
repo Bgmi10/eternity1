@@ -3,13 +3,16 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectCoverflow, Pagination } from "swiper/modules";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaBookmark, FaPlay } from "react-icons/fa";
-//@ts-ignore
+import { Volume2, VolumeX, Star, Info } from "lucide-react";
+import { cn } from "../../lib/utils";
+  //@ts-ignore
 import "swiper/css";
-//@ts-ignore
+  //@ts-ignore
 import "swiper/css/effect-coverflow";
-//@ts-ignore
+  //@ts-ignore
 import "swiper/css/pagination";
-import { sliderData } from "../../utils/constants";
+import { sliderData } from "../../utils/constants"
+
 interface YouTubePlayer {
   destroy: () => void;
   mute: () => void;
@@ -17,12 +20,13 @@ interface YouTubePlayer {
   playVideo: () => void;
 }
 
-export default function Slider() {
+export default function HeroSlider() {
   const [activeIndex, setActiveIndex] = useState(0);
-  //@ts-ignore
   const [isMuted, setIsMuted] = useState(true);
   const [isYTReady, setIsYTReady] = useState(false);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  //@ts-ignore
+  const [isHovered, setIsHovered] = useState(false);
   const playerRef = useRef<YouTubePlayer | null>(null);
   const iframeRef = useRef<HTMLDivElement>(null);
   const swiperRef = useRef<any>(null);
@@ -91,7 +95,16 @@ export default function Slider() {
     }
   };
 
-
+  const toggleMute = () => {
+    if (!playerRef.current) return;
+    if (isMuted) {
+      playerRef.current.unMute();
+      setIsMuted(false);
+    } else {
+      playerRef.current.mute();
+      setIsMuted(true);
+    }
+  };
 
   return (
     <div className="relative w-full h-full overflow-hidden">
@@ -105,7 +118,8 @@ export default function Slider() {
         loop
         autoplay={{
           delay: 5000,
-          disableOnInteraction: false,
+          disableOnInteraction: true,
+          pauseOnMouseEnter: true,
         }}
         coverflowEffect={{
           rotate: 15,
@@ -125,7 +139,11 @@ export default function Slider() {
       >
         {sliderData.map((item, index) => (
           <SwiperSlide key={item.objectId}>
-            <div className="relative w-full h-full">
+            <div 
+              className="relative w-full h-full"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
               <AnimatePresence mode="wait">
                 {!isVideoLoaded && (
                   <motion.div
@@ -146,41 +164,75 @@ export default function Slider() {
                 )}
               </AnimatePresence>
 
-              <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent" />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
 
               {activeIndex === index && (
-                <div className="absolute inset-0 flex items-center">
+                <div className="absolute inset-0 flex items-center top-20">
                   <div className="container px-4 md:px-6">
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5 }}
-                      className="max-w-3xl space-y-6"
+                      className="max-w-4xl space-y-8"
                     >
-                      <motion.img
-                        src={item.titleImage}
-                        alt={item.name}
-                        className="h-24 md:h-32 object-contain"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.5, delay: 0.2 }}
-                      />
-                      
-                      <motion.p
+                      <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        transition={{ duration: 0.5, delay: 0.3 }}
-                        className="text-emerald-400 text-lg font-semibold"
+                        transition={{ duration: 0.5, delay: 0.2 }}
+                        className="space-y-4"
                       >
-                        {item.label}
-                      </motion.p>
+                        <motion.img
+                          src={item.titleImage}
+                          alt={item.name}
+                          className="h-24 md:h-32 object-contain"
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.5 }}
+                        />
+                        
+                        <motion.div 
+                          className="flex items-center gap-6"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ duration: 0.5, delay: 0.3 }}
+                        >
+                          <span className="text-emerald-400 font-semibold text-lg">
+                            {item.label}
+                          </span>
+                          {item.rating && (
+                            <div className="flex items-center gap-1 text-yellow-400">
+                              <Star className="w-4 h-4 fill-current" />
+                              <span className="font-medium">{item.rating}</span>
+                            </div>
+                          )}
+                          
+                        </motion.div>
+
+                        {item.genres && (
+                          <motion.div 
+                            className="flex flex-wrap gap-2"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 0.5, delay: 0.4 }}
+                          >
+                            {item.genres.map((genre) => (
+                              <span 
+                                key={genre}
+                                className="px-3 py-1 bg-white/10 rounded-full text-sm text-white/90"
+                              >
+                                {genre}
+                              </span>
+                            ))}
+                          </motion.div>
+                        )}
+                      </motion.div>
 
                       <motion.p
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        transition={{ duration: 0.5, delay: 0.4 }}
-                        className="text-white/90 text-lg md:text-xl line-clamp-3"
+                        transition={{ duration: 0.5, delay: 0.5 }}
+                        className="text-white/90 text-lg md:text-xl line-clamp-2 leading-relaxed"
                       >
                         {item.storyline}
                       </motion.p>
@@ -188,16 +240,49 @@ export default function Slider() {
                       <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        transition={{ duration: 0.5, delay: 0.5 }}
+                        transition={{ duration: 0.5, delay: 0.6 }}
                         className="flex items-center gap-4"
                       >
-                        <button className="inline-flex items-center gap-2 px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors">
-                          <FaPlay className="text-lg" />
-                          <span className="font-semibold">Watch Now</span>
-                        </button>
-                        <button className="p-3 bg-white hover:bg-gray-100 text-gray-900 rounded-full transition-colors">
-                          <FaBookmark className="text-xl" />
-                        </button>
+                        <motion.button 
+                          className={cn(
+                            "group relative inline-flex items-center gap-2 px-8 py-4",
+                            "bg-red-600 hover:bg-red-700 text-white rounded-lg",
+                            "transition-all duration-300 ease-out",
+                            "overflow-hidden"
+                          )}
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                        >
+                          <motion.div
+                            className="absolute inset-0 bg-gradient-to-r from-red-500 to-red-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                          />
+                          <FaPlay className="text-lg relative z-10" />
+                          <span className="font-semibold text-lg relative z-10">Watch Now</span>
+                        </motion.button>
+
+                        <motion.button 
+                          className={cn(
+                            "p-4 bg-white/10 hover:bg-white/20 text-white rounded-full",
+                            "backdrop-blur-md transition-all duration-300",
+                            "border border-white/20"
+                          )}
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          <FaBookmark className="text-2xl" />
+                        </motion.button>
+
+                        <motion.button 
+                          className={cn(
+                            "p-4 bg-white/10 hover:bg-white/20 text-white rounded-full",
+                            "backdrop-blur-md transition-all duration-300",
+                            "border border-white/20"
+                          )}
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          <Info className="w-6 h-6" />
+                        </motion.button>
                       </motion.div>
                     </motion.div>
                   </div>
@@ -208,20 +293,24 @@ export default function Slider() {
         ))}
       </Swiper>
 
-      {/* <button
+      <motion.button
         onClick={toggleMute}
         className={cn(
-          "absolute top-4 right-4 z-50 p-2 rounded-full backdrop-blur-md transition-all duration-300",
-          "hover:bg-white/20",
-          "text-white/80 hover:text-white"
+          "absolute top-20 right-6 z-50 p-3",
+          "rounded-full backdrop-blur-md transition-all duration-300",
+          "bg-black/20 hover:bg-black/40",
+          "border border-white/20",
+          "text-white/90 hover:text-white"
         )}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
       >
         {isMuted ? (
           <VolumeX className="w-6 h-6" />
         ) : (
           <Volume2 className="w-6 h-6" />
         )}
-      </button> */}
+      </motion.button>
     </div>
   );
 }

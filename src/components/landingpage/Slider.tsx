@@ -10,17 +10,6 @@ import "swiper/css/effect-coverflow";
 //@ts-ignore
 import "swiper/css/pagination";
 import { sliderData } from "../../utils/constants";
-
-interface SliderData {
-  objectId: string;
-  name: string;
-  titleImage: string;
-  backdropURL: string;
-  trailerId: string;
-  label: string;
-  storyline: string;
-}
-
 interface YouTubePlayer {
   destroy: () => void;
   mute: () => void;
@@ -66,7 +55,7 @@ export default function Slider() {
     const YT = (window as any).YT;
     if (YT?.Player) {
       playerRef.current = new YT.Player(iframeRef.current, {
-        videoId: data[activeIndex]?.trailerId,
+        videoId: sliderData[activeIndex]?.trailerId,
         playerVars: {
           autoplay: 1,
           controls: 0,
@@ -90,7 +79,7 @@ export default function Slider() {
         },
       });
     }
-  }, [isYTReady, activeIndex, data]);
+  }, [isYTReady, activeIndex, sliderData]);
 
   const handleSlideChange = (swiper: any) => {
     setActiveIndex(swiper.realIndex);

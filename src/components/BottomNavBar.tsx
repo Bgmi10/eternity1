@@ -28,7 +28,7 @@ export default function BottomNavBar() {
   }, [lastScrollY, isVisible]);
 
   const menuItems = [
-    { name: "", icon: <FaFilm size={25}/>, color: "from-red-600 to-orange-600" },
+    { name: "", icon: <FaFilm size={25} />, color: "from-red-600 to-orange-600" },
     { name: "", icon: <FaTv size={25}/>, color: "from-blue-600 to-cyan-600" },
     { name: "", icon: <FaPodcast size={25}/>, color: "from-purple-600 to-pink-600" },
     { name: "", icon: <FaRadio size={25}/>, color: "from-green-600 to-emerald-600" },
@@ -43,7 +43,7 @@ export default function BottomNavBar() {
       className={cn(
         "fixed z-50 bottom-0 w-full sm:hidden",
         "py-2 px-4",
-        "bg-black/90 backdrop-blur-xl",
+        "bg-black",
         "border-t border-white/10",
         "shadow-lg shadow-black/50"
       )}
@@ -63,7 +63,7 @@ export default function BottomNavBar() {
           >
             <motion.div
               animate={activeTab === index ? {
-                y: -2,
+                y: -6,
                 scale: 1.1,
                 transition: { type: "spring", stiffness: 400, damping: 15 }
               } : {
@@ -72,12 +72,12 @@ export default function BottomNavBar() {
               }}
               className="relative"
             >
-              <span className={cn(
+              <span className={cn( 
                 "text-lg relative z-10",
                 "transition-colors duration-200",
                 activeTab === index 
-                  ? "text-white" 
-                  : "text-gray-300"
+                  ? `text-white` 
+                  : "text-red-500"
               )}>
                 {item.icon}
               </span>
@@ -89,7 +89,6 @@ export default function BottomNavBar() {
                     "opacity-20"
                   )}
                   initial={{ opacity: 0 }}
-                  animate={{ opacity: 0.2 }}
                   exit={{ opacity: 0 }}
                 />
               )}

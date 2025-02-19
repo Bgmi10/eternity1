@@ -13,7 +13,7 @@ export default function Footer() {
             >
                 {/* Connect with us section */}
                 <div className="w-full text-center mb-8">
-                    <span className="text-white font-bold text-[28px] lg:text-[27px] tracking-[4px] inline-block">
+                    <span className="text-white font-bold text-[34px] lg:text-[27px] tracking-[4px] inline-block">
                         Connect with us
                     </span>
                 </div>
@@ -36,13 +36,13 @@ export default function Footer() {
 
                 {/* Footer Links Container */}
                 <motion.div 
-                    className="w-full grid sm:grid-cols-2 lg:grid-cols-none sm:flex-wrap lg:flex lg:flex-row gap-10 lg:gap-20 sm: mb-4 lg:mb-12 lg:justify-center sm:justify-center"
+                    className="w-full grid sm:grid-cols-2 lg:grid-cols-none sm:flex-wrap lg:flex lg:flex-row gap-10 lg:gap-20 sm: mb-4 lg:mb-12 lg:justify-center sm: justify-center"
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: "easeInOut", delay: 0.3 }}
                     viewport={{ once: true }}
                 >
-                    <div className="flex flex-col items-center sm:col-span-2 lg:col-span-1 lg:items-start">
+                    <div className="flex flex-col jus items-center sm:col-span-2 lg:col-span-1 lg:items-start">
                         <span className="text-[#33C3A5] font-bold text-xl mb-4 tracking-[0.01rem]">
                             Our Apps
                         </span>
@@ -111,7 +111,7 @@ export default function Footer() {
                     </div>
                 </motion.div>
                 <motion.div 
-                    className="mb-4 flex lg:flex-row justify-between sm: flex-col lg:gap-52 sm: gap-2 items-center"
+                    className="mb-4 flex lg:flex-row justify-between sm: flex-col lg:gap-52 sm: gap-2 items-center mt-4"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ duration: 0.8, delay: 0.6, ease: "easeInOut" }}

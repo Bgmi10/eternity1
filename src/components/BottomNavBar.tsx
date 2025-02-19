@@ -61,21 +61,6 @@ export default function BottomNavBar() {
             onClick={() => setActiveTab(index)}
             whileTap={{ scale: 0.9 }}
           >
-            <AnimatePresence mode="wait">
-              {activeTab === index && (
-                <motion.div
-                  className={cn(
-                    "absolute inset-0 rounded-xl opacity-20",
-                    "bg-gradient-to-t",
-                    item.color
-                  )}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 0.2, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                />
-              )}
-            </AnimatePresence>
-
             <motion.div
               animate={activeTab === index ? {
                 y: -2,
@@ -92,7 +77,7 @@ export default function BottomNavBar() {
                 "transition-colors duration-200",
                 activeTab === index 
                   ? "text-white" 
-                  : "text-white/40"
+                  : "text-white"
               )}>
                 {item.icon}
               </span>
@@ -114,24 +99,6 @@ export default function BottomNavBar() {
           </motion.button>
         ))}
       </div>
-
-      <motion.div 
-        className="absolute bottom-0 h-0.5 w-full left-0"
-        style={{
-          background: `linear-gradient(to right, 
-            transparent 0%, 
-            ${activeTab === 0 ? '#ef4444' : 
-              activeTab === 1 ? '#0284c7' : 
-              activeTab === 2 ? '#a855f7' : 
-              activeTab === 3 ? '#059669' : 
-              '#eab308'} 50%, 
-            transparent 100%
-          )`
-        }}
-        initial={{ opacity: 0, scaleX: 0 }}
-        animate={{ opacity: 0.5, scaleX: 1 }}
-        transition={{ duration: 0.1 }}
-      />
     </motion.div>
   );
 }

@@ -19,11 +19,10 @@ export default function Header() {
     }, [])  
 
     return (
-        <div className={`flex justify-between p-4 z-50 fixed top-0 left-0 right-0 items-center w-full  bg-gradient-to-b from-black/70 ${isScroll ? "  backdrop-blur-2xl" : ""}`}>
+        <div className={`flex justify-between p-4 z-50 fixed top-0 left-0 right-0 items-center w-full bg-gradient-to-b from-black/70 ${isScroll ? "backdrop-blur-2xl bg-gradient-to-b from-black/10" : ""}`}>
             <div className="flex items-center">
                 <div className="lg:text-2xl sm: text-xl font-semibold text-white gap-1 flex">
-                    <span className="text-[#E50914]">ETERNITY</span>
-                    <span className="text-white">READY</span>
+                 <img src="https://eternityready.com/templates/apollo/img/logo1USE-THIS.png" className="sm: w-[110px] lg:w-32"/>
                 </div>
             </div>
             <div className="lg:flex items-center gap-8 text-white font-semibold sm: hidden">

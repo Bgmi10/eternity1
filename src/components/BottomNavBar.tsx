@@ -28,11 +28,11 @@ export default function BottomNavBar() {
   }, [lastScrollY, isVisible]);
 
   const menuItems = [
-    { name: "", icon: <FaFilm />, color: "from-red-600 to-orange-600" },
-    { name: "", icon: <FaTv />, color: "from-blue-600 to-cyan-600" },
-    { name: "", icon: <FaPodcast />, color: "from-purple-600 to-pink-600" },
-    { name: "", icon: <FaRadio />, color: "from-green-600 to-emerald-600" },
-    { name: "", icon: <FaMusic />, color: "from-yellow-600 to-amber-600" }
+    { name: "", icon: <FaFilm size={25}/>, color: "from-red-600 to-orange-600" },
+    { name: "", icon: <FaTv size={25}/>, color: "from-blue-600 to-cyan-600" },
+    { name: "", icon: <FaPodcast size={25}/>, color: "from-purple-600 to-pink-600" },
+    { name: "", icon: <FaRadio size={25}/>, color: "from-green-600 to-emerald-600" },
+    { name: "", icon: <FaMusic size={25 }/>, color: "from-yellow-600 to-amber-600" }
   ];
 
   return (
@@ -77,7 +77,7 @@ export default function BottomNavBar() {
                 "transition-colors duration-200",
                 activeTab === index 
                   ? "text-white" 
-                  : "text-white"
+                  : "text-gray-300"
               )}>
                 {item.icon}
               </span>
@@ -86,8 +86,6 @@ export default function BottomNavBar() {
                 <motion.div
                   className={cn(
                     "absolute -inset-3 rounded-full blur-md -z-10",
-                    "bg-gradient-to-t",
-                    item.color,
                     "opacity-20"
                   )}
                   initial={{ opacity: 0 }}

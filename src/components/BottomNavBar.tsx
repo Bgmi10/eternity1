@@ -36,8 +36,8 @@ export default function BottomNavBar() {
       transition={{ type: "spring", stiffness: 250, damping: 25 }}
       className={cn(
         "fixed z-50 bottom-4 left-1/2 transform -translate-x-1/2",
-        "w-[90%] max-w-md bg-gradient-to-t from-black/90 to-red-800 backdrop-blur-2xl",
-        "border border-white/10 rounded-3xl shadow-2xl shadow-black/50",
+        "w-[90%] max-w-md bg-gradient-to-t from-black/90 to-red-500 backdrop-blur-2xl",
+        "rounded-3xl shadow-2xl shadow-black/50",
         "px-6 py-3 flex justify-around items-center"
       )}
     >

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { FaFilm, FaTv, FaPodcast, FaMusic } from "react-icons/fa";
 import { FaRadio } from "react-icons/fa6";
 import { cn } from "../lib/utils";

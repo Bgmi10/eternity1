@@ -245,7 +245,7 @@ export default function HeroSlider() {
                       >
                         <motion.button 
                           className={cn(
-                            "group relative inline-flex items-center gap-2 px-8 py-4",
+                            "group relative inline-flex items-center gap-2 lg:px-8 lg:py-4 sm: px-3 sm: py-3",
                             "bg-red-600 hover:bg-red-700 text-white rounded-lg",
                             "transition-all duration-300 ease-out",
                             "overflow-hidden"
@@ -296,7 +296,7 @@ export default function HeroSlider() {
       <motion.button
         onClick={toggleMute}
         className={cn(
-          "absolute top-20 right-6 z-50 p-3",
+          "absolute top-20 right-6 z-40 p-3",
           "rounded-full backdrop-blur-md transition-all duration-300",
           "bg-black/20 hover:bg-black/40",
           "border border-white/20",

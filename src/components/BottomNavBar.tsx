@@ -28,11 +28,11 @@ export default function BottomNavBar() {
   }, [lastScrollY, isVisible]);
 
   const menuItems = [
-    { name: "Movies", icon: <FaFilm />, color: "from-red-600 to-orange-600" },
-    { name: "TV", icon: <FaTv />, color: "from-blue-600 to-cyan-600" },
-    { name: "Podcasts", icon: <FaPodcast />, color: "from-purple-600 to-pink-600" },
-    { name: "Radio", icon: <FaRadio />, color: "from-green-600 to-emerald-600" },
-    { name: "Music", icon: <FaMusic />, color: "from-yellow-600 to-amber-600" }
+    { name: "", icon: <FaFilm />, color: "from-red-600 to-orange-600" },
+    { name: "", icon: <FaTv />, color: "from-blue-600 to-cyan-600" },
+    { name: "", icon: <FaPodcast />, color: "from-purple-600 to-pink-600" },
+    { name: "", icon: <FaRadio />, color: "from-green-600 to-emerald-600" },
+    { name: "", icon: <FaMusic />, color: "from-yellow-600 to-amber-600" }
   ];
 
   return (
@@ -111,18 +111,6 @@ export default function BottomNavBar() {
                 />
               )}
             </motion.div>
-
-            <motion.span
-              className={cn(
-                "text-[10px] font-medium mt-1",
-                "transition-colors duration-200",
-                activeTab === index 
-                  ? "text-white" 
-                  : "text-white/40"
-              )}
-            >
-              {item.name}
-            </motion.span>
           </motion.button>
         ))}
       </div>
@@ -142,7 +130,7 @@ export default function BottomNavBar() {
         }}
         initial={{ opacity: 0, scaleX: 0 }}
         animate={{ opacity: 0.5, scaleX: 1 }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0.1 }}
       />
     </motion.div>
   );

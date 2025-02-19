@@ -2,12 +2,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";  
 import { useEffect, useState } from "react";
+import { Menu } from "lucide-react";
 
 export default function Header() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isScroll, setIsScroll] = useState(false);
 
-    console.log(isScroll);
     const handleScroll = () => {
         const isScrollFromTop = window.scrollY > 0;
         setIsScroll(isScrollFromTop);
@@ -68,11 +68,15 @@ export default function Header() {
                     <FontAwesomeIcon icon={faAngleDown} />
                 </div>
             </div>
-            <div className="items-center flex">
+            <div className="gap-2 items-center flex">
               <button className="relative flex items-center gap-2 bg-gradient-to-b from-red-500 to-red-600 cursor-pointer p-1 rounded-lg text-white font-semibold lg:px-4 lg:text-lg px-5 text-md transition-all duration-300 hover:shadow-[0_0_20px_rgba(229,9,20,0.7)]">
                  Donate
                </button>
+               <div className="sm: block lg:hidden">
+                 <Menu className="text-white" strokeWidth={3} size={30} />
+               </div>
             </div>
+            
         </div>
     );
 }

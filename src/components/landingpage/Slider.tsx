@@ -1,15 +1,15 @@
 import { useRef, useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectCoverflow, Pagination } from "swiper/modules";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { FaBookmark, FaPlay } from "react-icons/fa";
 import { Volume2, VolumeX, Star, Info } from "lucide-react";
 import { cn } from "../../lib/utils";
-  //@ts-ignore
+//@ts-ignore
 import "swiper/css";
-  //@ts-ignore
+//@ts-ignore
 import "swiper/css/effect-coverflow";
-  //@ts-ignore
+//@ts-ignore
 import "swiper/css/pagination";
 import { sliderData } from "../../utils/constants"
 
@@ -18,6 +18,8 @@ interface YouTubePlayer {
   mute: () => void;
   unMute: () => void;
   playVideo: () => void;
+  pauseVideo: () => void;
+  getPlayerState: () => number;
 }
 
 export default function HeroSlider() {
@@ -28,9 +30,10 @@ export default function HeroSlider() {
   //@ts-ignore
   const [isHovered, setIsHovered] = useState(false);
   const playerRef = useRef<YouTubePlayer | null>(null);
-  const iframeRef = useRef<HTMLDivElement>(null);
+  const playerContainerRef = useRef<HTMLDivElement>(null);
   const swiperRef = useRef<any>(null);
-
+  const activePlayerIdRef = useRef<string | null>(null);
+  
   useEffect(() => {
     const loadYouTubeAPI = () => {
       if (!(window as any).YT) {
@@ -38,8 +41,11 @@ export default function HeroSlider() {
         tag.src = "https://www.youtube.com/iframe_api";
         const firstScriptTag = document.getElementsByTagName("script")[0];
         firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
-        (window as any).onYouTubeIframeAPIReady = () => setIsYTReady(true);
-      } else {
+      
+        (window as any).onYouTubeIframeAPIReady = () => {
+          setIsYTReady(true);
+        };
+      } else if ((window as any).YT && (window as any).YT.Player) {
         setIsYTReady(true);
       }
     };
@@ -48,61 +54,156 @@ export default function HeroSlider() {
 
     return () => {
       if (playerRef.current) {
-        playerRef.current.destroy();
+        try {
+          playerRef.current.destroy();
+        } catch (error) {
+          console.error("Error destroying player:", error);
+        }
+        playerRef.current = null;
       }
     };
   }, []);
 
-  useEffect(() => {
-    if (!isYTReady || !iframeRef.current || playerRef.current) return;
-
+  const createYouTubePlayer = (containerId: string, videoId: string) => {
+    if (!videoId) {
+      console.error("Invalid video ID");
+      return;
+    }
+    
     const YT = (window as any).YT;
-    if (YT?.Player) {
-      playerRef.current = new YT.Player(iframeRef.current, {
-        videoId: sliderData[activeIndex]?.trailerId,
+    if (!YT?.Player) {
+      console.error("YouTube API not available");
+      return;
+    }
+    
+    const playerId = `youtube-player-${activeIndex}-${Date.now()}`;
+    activePlayerIdRef.current = playerId;
+    
+    try {
+      console.log(`Initializing player for ${videoId} with ID ${playerId}`);
+      setIsVideoLoaded(false);
+      
+      playerRef.current = new YT.Player(containerId, {
+        videoId: videoId,
         playerVars: {
           autoplay: 1,
           controls: 0,
           modestbranding: 1,
           rel: 0,
           playsinline: 1,
-          loop: 1,
           mute: 1,
+          enablejsapi: 1,
         },
         events: {
           onReady: (event: any) => {
+            if (activePlayerIdRef.current !== playerId) {
+              console.log(`Player ${playerId} ready but no longer active, destroying`);
+              event.target.destroy();
+              return;
+            }
+            
+            console.log(`Player ${playerId} ready, playing video`);
             event.target.mute();
             setIsMuted(true);
+            event.target.playVideo();
             setIsVideoLoaded(true);
           },
           onStateChange: (event: any) => {
+            if (activePlayerIdRef.current !== playerId) return;
+            
             if (event.data === YT.PlayerState.ENDED) {
               event.target.playVideo();
+            } else if (event.data === YT.PlayerState.PLAYING) {
+              setIsVideoLoaded(true);
             }
           },
+          onError: (event: any) => {
+            console.error(`YouTube player error for ${playerId}:`, event.data);
+            setIsVideoLoaded(false);
+          }
         },
       });
+    } catch (error) {
+      console.error("Error initializing YouTube player:", error);
+      setIsVideoLoaded(false);
     }
-  }, [isYTReady, activeIndex, sliderData]);
+  };
+
+  useEffect(() => {
+    if (!isYTReady || !playerContainerRef.current) return;
+    
+    const initializePlayer = () => {
+      if (playerRef.current) {
+        try {
+          playerRef.current.destroy();
+        } catch (error) {
+          console.error("Error destroying previous player:", error);
+        }
+        playerRef.current = null;
+      }
+      
+      if (playerContainerRef.current) {
+        playerContainerRef.current.innerHTML = '';
+        
+        const playerDiv = document.createElement("div");
+        const uniqueId = `player-container-${activeIndex}`;
+        playerDiv.id = uniqueId;
+        
+        playerDiv.style.width = "100%";
+        playerDiv.style.height = "100%";
+        playerDiv.style.position = "absolute";
+        playerDiv.style.top = "0";
+        playerDiv.style.left = "0";
+        
+        playerContainerRef.current.appendChild(playerDiv);
+        
+        setTimeout(() => {
+          if (document.getElementById(uniqueId)) {
+            const videoId = sliderData[activeIndex]?.trailerId;
+            if (videoId) {
+              createYouTubePlayer(uniqueId, videoId);
+            } else {  
+              console.error(`No trailer ID for slide ${activeIndex}`);
+            }
+          }
+        }, 300);
+      }
+    };
+    
+    const timer = setTimeout(initializePlayer, 250);
+    return () => clearTimeout(timer);
+  }, [isYTReady, activeIndex]);
 
   const handleSlideChange = (swiper: any) => {
-    setActiveIndex(swiper.realIndex);
-    setIsVideoLoaded(false);
-
+    const newIndex = swiper.realIndex;
+    activePlayerIdRef.current = null;
+    
     if (playerRef.current) {
-      playerRef.current.destroy();
+      try {
+        playerRef.current.destroy();
+      } catch (error) {
+        console.error("Error destroying player during slide change:", error);
+      }
       playerRef.current = null;
     }
+    
+    setActiveIndex(newIndex);
+    setIsVideoLoaded(false);
   };
 
   const toggleMute = () => {
     if (!playerRef.current) return;
-    if (isMuted) {
-      playerRef.current.unMute();
-      setIsMuted(false);
-    } else {
-      playerRef.current.mute();
-      setIsMuted(true);
+    
+    try {
+      if (isMuted) {
+        playerRef.current.unMute();
+        setIsMuted(false);
+      } else {
+        playerRef.current.mute();
+        setIsMuted(true);
+      }
+    } catch (error) {
+      console.error("Error toggling mute:", error);
     }
   };
 
@@ -115,12 +216,7 @@ export default function HeroSlider() {
         grabCursor
         centeredSlides
         slidesPerView={1}
-        loop
-        autoplay={{
-          delay: 5000,
-          disableOnInteraction: true,
-          pauseOnMouseEnter: true,
-        }}
+        loop={false}
         coverflowEffect={{
           rotate: 15,
           stretch: 0,
@@ -144,31 +240,28 @@ export default function HeroSlider() {
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
-              <AnimatePresence mode="wait">
-                {!isVideoLoaded && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="absolute inset-0"
-                  >
-                    <motion.img
-                      src={item.backdropURL}
-                      alt={item.name}
-                      className="w-full h-full object-cover"
-                      initial={{ scale: 1.2 }}
-                      animate={{ scale: 1 }}
-                      transition={{ duration: 0.8 }}
-                    />
-                  </motion.div>
-                )}
-              </AnimatePresence>
+             {!isVideoLoaded && <div className="absolute inset-0">
+                <img
+                  src={item.backdropURL}
+                  alt={item.name}
+                  className="w-full h-full object-cover"
+                />
+              </div>}
+              
+              {activeIndex === index && (
+                <div 
+                  ref={playerContainerRef}
+                  className={`absolute  bg-gradient-to-r from-black/90 via-black/50 to-transparent z-20 inset-0 transition-opacity duration-500 ${
+                    isVideoLoaded ? 'opacity-100 w-[2000px] h-[1000px] mt-[-130px] ml-[-200px]' : 'opacity-0'
+                  }`}
+                />
+              )}
 
-              <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent z-20" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-20" />
 
               {activeIndex === index && (
-                <div className="absolute inset-0 flex items-center top-20">
+                <div className="absolute inset-0 flex items-center top-20 z-30">
                   <div className="container px-4 md:px-6">
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
@@ -206,7 +299,6 @@ export default function HeroSlider() {
                               <span className="font-medium">{item.rating}</span>
                             </div>
                           )}
-                          
                         </motion.div>
 
                         {item.genres && (
@@ -245,7 +337,7 @@ export default function HeroSlider() {
                       >
                         <motion.button 
                           className={cn(
-                            "group relative inline-flex items-center gap-2 lg:px-8 lg:py-4 sm: px-3 sm: py-3",
+                            "group relative inline-flex items-center gap-2 lg:px-8 lg:py-4 px-4 py-3",
                             "bg-red-600 hover:bg-red-700 text-white rounded-lg",
                             "transition-all duration-300 ease-out",
                             "overflow-hidden"
@@ -293,6 +385,7 @@ export default function HeroSlider() {
         ))}
       </Swiper>
 
+      {/* Volume control */}
       <motion.button
         onClick={toggleMute}
         className={cn(

@@ -1,6 +1,6 @@
    export const sliderData =  [
         {
-            "objectId": "xt1VxCKcF8",
+            "objectId": "xt1VxCKcFasd8",
             "name": "Kraven the Hunter",
             "posterURL": "https://image.tmdb.org/t/p/original/i47IUSsN126K11JUzqQIOi1Mg1M.jpg",
             "releaseYear": 2024,
@@ -15,7 +15,7 @@
             "storyline": "Kraven Kravinoff's complex relationship with his ruthless gangster father, Nikolai, starts him down a path of vengeance with brutal consequences, motivating him to become not only the greatest hunter in the world, but also one of its most feared.",
             "rating": "6.3",
             "tmdbId": 539972,
-            trailerId: "rze8QYwWGMs",
+            trailerId: "4WwtfTaW_bM",
             "embedLinks": {
                 "upnshare": "nszor",
                 "streamruby": "0t3d9ymhsbzc",
@@ -36,7 +36,7 @@
             "updatedAt": "2025-01-18T12:42:14.771Z"
         },
         {
-            "objectId": "xt1VxCKcF8",
+            "objectId": "asddadssd",
             "name": "Kraven the Hunter",
             "posterURL": "https://image.tmdb.org/t/p/original/i47IUSsN126K11JUzqQIOi1Mg1M.jpg",
             "releaseYear": 2024,
@@ -72,7 +72,7 @@
             "updatedAt": "2025-01-18T12:42:14.771Z"
         },
         {
-            "objectId": "xt1VxCKcF8",
+            "objectId": "xt1VxCasdasdKcF8",
             "name": "Kraven the Hunter",
             "posterURL": "https://image.tmdb.org/t/p/original/i47IUSsN126K11JUzqQIOi1Mg1M.jpg",
             "releaseYear": 2024,

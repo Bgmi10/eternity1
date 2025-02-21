@@ -240,7 +240,7 @@ export default function HeroSlider() {
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
-             {!isVideoLoaded && <div className="absolute inset-0">
+             {isVideoLoaded && <div className="absolute inset-0">
                 <img
                   src={item.backdropURL}
                   alt={item.name}
@@ -248,14 +248,14 @@ export default function HeroSlider() {
                 />
               </div>}
               
-              {activeIndex === index && (
+              {/* {activeIndex === index && (
                 <div 
                   ref={playerContainerRef}
                   className={`absolute  bg-gradient-to-r from-black/90 via-black/50 to-transparent z-20 inset-0 transition-opacity duration-500 ${
                     isVideoLoaded ? 'opacity-100 w-[2000px] h-[1000px] mt-[-130px] ml-[-200px]' : 'opacity-0'
                   }`}
                 />
-              )}
+              )} */}
 
               <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent z-20" />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-20" />

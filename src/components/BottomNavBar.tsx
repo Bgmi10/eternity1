@@ -8,11 +8,11 @@ export default function BottomNavBar() {
     const [activeTab, setActiveTab] = useState(0);              
 
     const menuItems = [
-        { name: "", icon: <FaFilm size={25} />, color: "from-red-600 to-orange-600" },            
-        { name: "", icon: <FaTv size={25} />, color: "from-blue-600 to-cyan-600" },            
-        { name: "", icon: <FaPodcast size={25} />, color: "from-purple-600 to-pink-600" },            
-        { name: "", icon: <FaRadio size={25} />, color: "from-green-600 to-emerald-600" },            
-        { name: "", icon: <FaMusic size={25} />, color: "from-yellow-600 to-amber-600" }
+        { name: "Movies", icon: <FaFilm size={24} />, color: "from-red-600 to-orange-600" },            
+        { name: "Series", icon: <FaTv size={24} />, color: "from-blue-600 to-cyan-600" },            
+        { name: "Podcast", icon: <FaPodcast size={24} />, color: "from-purple-600 to-pink-600" },            
+        { name: "Radio", icon: <FaRadio size={24} />, color: "from-green-600 to-emerald-600" },            
+        { name: "Music", icon: <FaMusic size={24} />, color: "from-yellow-600 to-amber-600" }
     ];             
 
     return (                  
@@ -22,8 +22,7 @@ export default function BottomNavBar() {
             transition={{ type: "spring", stiffness: 300, damping: 30 }} 
             className={cn(
                 "fixed z-50 bottom-0 w-full sm:hidden", 
-                "py-2 px-4", 
-                "bg-black", 
+                "py-3 px-4 bg-black",
                 "border-t border-white/10", 
                 "shadow-lg shadow-black/50"
             )}
@@ -33,10 +32,10 @@ export default function BottomNavBar() {
                     <motion.button 
                         key={index} 
                         className={cn(
-                            "relative flex flex-col items-center", 
-                            "w-16 py-2 rounded-xl", 
-                            "active:opacity-70 touch-none", 
-                            "transition-transform duration-200"
+                            "relative flex flex-col items-center gap-1", 
+                            "w-16 py-2 rounded-lg", 
+                            "active:opacity-80", 
+                            "transition-all duration-200"
                         )}
                         onClick={() => setActiveTab(index)}
                         whileTap={{ scale: 0.9 }}
@@ -47,26 +46,20 @@ export default function BottomNavBar() {
                                     ? { y: -6, scale: 1.1, transition: { type: "spring", stiffness: 400, damping: 15 }} 
                                     : { y: 0, scale: 1 }
                             }
-                            className="relative"
+                            className="relative flex flex-col items-center"
                         >
                             <span className={cn(
-                                "text-lg relative z-10", 
-                                "transition-colors duration-200", 
-                                activeTab === index ? `text-white` : "text-gray-500"
-                            )}
-                            >
+                                "text-xl relative z-10",
+                                activeTab === index ? "text-white" : "text-gray-500"
+                            )}>
                                 {item.icon}
                             </span>
-                            {activeTab === index && (
-                                <motion.div
-                                    className={cn(
-                                        "absolute -inset-3 rounded-full blur-md -z-10", 
-                                        "opacity-20"
-                                    )}
-                                    initial={{ opacity: 0 }}
-                                    exit={{ opacity: 0 }}
-                                />
-                            )}
+                            <span className={cn(
+                                "text-xs font-medium",
+                                activeTab === index ? "text-white" : "text-gray-400"
+                            )}>
+                                {item.name}
+                            </span>
                         </motion.div>
                     </motion.button>
                 ))}

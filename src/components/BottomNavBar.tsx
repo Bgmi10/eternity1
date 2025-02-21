@@ -8,11 +8,11 @@ export default function BottomNavBar() {
     const [activeTab, setActiveTab] = useState(0);              
 
     const menuItems = [
-        { name: "Movies", icon: <FaFilm size={24} />, color: "from-red-600 to-orange-600" },            
-        { name: "Series", icon: <FaTv size={24} />, color: "from-blue-600 to-cyan-600" },            
-        { name: "Podcast", icon: <FaPodcast size={24} />, color: "from-purple-600 to-pink-600" },            
-        { name: "Radio", icon: <FaRadio size={24} />, color: "from-green-600 to-emerald-600" },            
-        { name: "Music", icon: <FaMusic size={24} />, color: "from-yellow-600 to-amber-600" }
+        { name: "Movies", icon: <FaFilm size={24} /> },            
+        { name: "Series", icon: <FaTv size={24} /> },            
+        { name: "Podcast", icon: <FaPodcast size={24} /> },            
+        { name: "Radio", icon: <FaRadio size={24} /> },            
+        { name: "Music", icon: <FaMusic size={24} /> }
     ];             
 
     return (                  
@@ -46,7 +46,7 @@ export default function BottomNavBar() {
                                     ? { y: -6, scale: 1.1, transition: { type: "spring", stiffness: 400, damping: 15 }} 
                                     : { y: 0, scale: 1 }
                             }
-                            className="relative flex flex-col items-center"
+                            className={`${activeTab === index ? "" : ""} relative flex flex-col items-center`}
                         >
                             <span className={cn(
                                 "text-xl relative z-10",
@@ -56,7 +56,7 @@ export default function BottomNavBar() {
                             </span>
                             <span className={cn(
                                 "text-xs font-medium",
-                                activeTab === index ? "text-white" : "text-gray-400"
+                                activeTab === index ? "text-white " : "text-gray-400"
                             )}>
                                 {item.name}
                             </span>

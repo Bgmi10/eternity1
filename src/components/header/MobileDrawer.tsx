@@ -1,8 +1,22 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
+import { useEffect } from "react";
 
 export default function MobileDrawer({ isMenuOpen, drawerRef, handleMenuClick }: { isMenuOpen: boolean, drawerRef: any, handleMenuClick: () => void}) {
+
+    useEffect(() => {
+        if (isMenuOpen) {
+            document.body.classList.add("overflow-hidden");
+        } else {
+            document.body.classList.remove("overflow-hidden");
+        }
+
+        return () => {
+            document.body.classList.remove("overflow-hidden");
+        };
+    }, [isMenuOpen]);
+
     return(
         <div>
             <AnimatePresence>

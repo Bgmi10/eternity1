@@ -218,7 +218,7 @@ export default function HeroSlider() {
         slidesPerView={1}
         loop={false}
         coverflowEffect={{
-          rotate: 15,
+          rotate: 15, 
           stretch: 0,
           depth: 100,
           modifier: 1,
@@ -231,71 +231,69 @@ export default function HeroSlider() {
           },
         }}
         onSlideChange={handleSlideChange}
-        className="w-full h-[calc(100vh-4rem)] md:h-[calc(100vh-5rem)]"
+        className="w-full h-[calc(100vh-31rem)] md:h-[calc(100vh-5rem)]"
       >
         {sliderData.map((item, index) => (
           <SwiperSlide key={item.objectId}>
             <div 
-              className="relative w-full h-full"
+              className="relative w-full h-full lg:mt-0"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
-             {isVideoLoaded && <div className="absolute inset-0">
+             {!isVideoLoaded && <div className="absolute inset-0">
                 <img
                   src={item.backdropURL}
                   alt={item.name}
-                  className="w-full h-full object-cover"
+                  className="w-full lg:h-[full] object-cover sm: mt-20 lg:mt-0"
                 />
               </div>}
-              
               {/* {activeIndex === index && (
                 <div 
                   ref={playerContainerRef}
                   className={`absolute  bg-gradient-to-r from-black/90 via-black/50 to-transparent z-20 inset-0 transition-opacity duration-500 ${
-                    isVideoLoaded ? 'opacity-100 w-[2000px] h-[1000px] mt-[-130px] ml-[-200px]' : 'opacity-0'
+                    isVideoLoaded ? 'opacity-100 lg:w-[2000px] lg:h-[1000px] lg:mt-[-130px] sm: mt-[-450px] ml-[-200px]' : 'opacity-0'
                   }`}
                 />
               )} */}
-
               <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent z-20" />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-20" />
 
               {activeIndex === index && (
-                <div className="absolute inset-0 flex items-center top-20 z-30">
+                <div className="absolute inset-0 flex items-center lg:top-20 z-30">
                   <div className="container px-4 md:px-6">
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5 }}
-                      className="max-w-4xl space-y-8"
+                      className="max-w-4xl lg:space-y-8 sm: space-y-3"
                     >
                       <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.5, delay: 0.2 }}
-                        className="space-y-4"
+                        className="lg:space-y-4 sm: space-y-2"
                       >
                         <motion.img
                           src={item.titleImage}
                           alt={item.name}
-                          className="h-24 md:h-32 object-contain"
+                          className="h-14 md:h-32 object-contain"
                           initial={{ opacity: 0, scale: 0.8 }}
                           animate={{ opacity: 1, scale: 1 }}
                           transition={{ duration: 0.5 }}
                         />
                         
                         <motion.div 
-                          className="flex items-center gap-6"
+                          className="flex items-center lg:gap-6 gap-3"
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           transition={{ duration: 0.5, delay: 0.3 }}
                         >
-                          <span className="text-emerald-400 font-semibold text-lg">
+                          <span className="text-emerald-400 font-semibold lg:text-lg sm: text-xs">
                             {item.label}
                           </span>
                           {item.rating && (
                             <div className="flex items-center gap-1 text-yellow-400">
-                              <Star className="w-4 h-4 fill-current" />
+                              <Star className="lg:w-4 lg:h-4 w-3 h-3 fill-current" />
                               <span className="font-medium">{item.rating}</span>
                             </div>
                           )}
@@ -311,7 +309,7 @@ export default function HeroSlider() {
                             {item.genres.map((genre) => (
                               <span 
                                 key={genre}
-                                className="px-3 py-1 bg-white/10 rounded-full text-sm text-white/90"
+                                className="px-3 py-1 bg-white/10 rounded-full lg:text-sm text-xs  text-white/90"
                               >
                                 {genre}
                               </span>
@@ -319,25 +317,28 @@ export default function HeroSlider() {
                           </motion.div>
                         )}
                       </motion.div>
-
-                      <motion.p
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.5, delay: 0.5 }}
-                        className="text-white/90 text-lg md:text-xl line-clamp-2 leading-relaxed"
-                      >
-                        {item.storyline}
-                      </motion.p>
-
+                      <div className="sm: hidden lg:block">
+                        <motion.p
+                         initial={{ opacity: 0 }}
+                         animate={{ opacity: 1 }}
+                         transition={{ duration: 0.5, delay: 0.5 }}
+                         className="text-white/90 text-lg md:text-xl leading-relaxed 
+                                    lg:block w-1/2 hidden overflow-hidden text-ellipsis 
+                                    line-clamp-2"
+                         style={{ display: "-webkit-box", WebkitBoxOrient: "vertical", WebkitLineClamp: 2 }}
+                        >
+                          {item.storyline}
+                        </motion.p>
+                      </div>
                       <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.5, delay: 0.6 }}
-                        className="flex items-center gap-4"
+                        className="flex items-center gap-3"
                       >
                         <motion.button 
                           className={cn(
-                            "group relative inline-flex items-center gap-2 lg:px-8 lg:py-4 px-4 py-3",
+                            "group relative inline-flex items-center gap-2 lg:px-8 lg:py-4 px-2 py-2",
                             "bg-red-600 hover:bg-red-700 text-white rounded-lg",
                             "transition-all duration-300 ease-out",
                             "overflow-hidden"
@@ -348,32 +349,32 @@ export default function HeroSlider() {
                           <motion.div
                             className="absolute inset-0 bg-gradient-to-r from-red-500 to-red-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                           />
-                          <FaPlay className="text-lg relative z-10" />
-                          <span className="font-semibold text-lg relative z-10">Watch Now</span>
+                          <FaPlay className="lg:text-lg text-sm relative z-10" />
+                          <span className="font-semibold lg:text-lg text-sm relative z-10">Watch Now</span>
                         </motion.button>
 
                         <motion.button 
                           className={cn(
-                            "p-4 bg-white/10 hover:bg-white/20 text-white rounded-full",
+                            "lg:p-4 p-3 bg-white/10 hover:bg-white/20 text-white rounded-full",
                             "backdrop-blur-md transition-all duration-300",
                             "border border-white/20"
                           )}
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                         >
-                          <FaBookmark className="text-2xl" />
+                          <FaBookmark className="lg:text-2xl text-sm" />
                         </motion.button>
 
                         <motion.button 
                           className={cn(
-                            "p-4 bg-white/10 hover:bg-white/20 text-white rounded-full",
+                            "lg:p-4 p-3 bg-white/10 hover:bg-white/20 text-white rounded-full",
                             "backdrop-blur-md transition-all duration-300",
                             "border border-white/20"
                           )}
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                         >
-                          <Info className="w-6 h-6" />
+                          <Info className="lg:w-6 lg:h-6 h-4 w-4" />
                         </motion.button>
                       </motion.div>
                     </motion.div>
@@ -384,8 +385,6 @@ export default function HeroSlider() {
           </SwiperSlide>
         ))}
       </Swiper>
-
-      {/* Volume control */}
       <motion.button
         onClick={toggleMute}
         className={cn(
@@ -395,8 +394,9 @@ export default function HeroSlider() {
           "border border-white/20",
           "text-white/90 hover:text-white"
         )}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
       >
         {isMuted ? (
           <VolumeX className="w-6 h-6" />

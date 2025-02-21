@@ -247,14 +247,14 @@ export default function HeroSlider() {
                   className="w-full lg:h-[full] object-cover sm: mt-20 lg:mt-0"
                 />
               </div>}
-              {/* {activeIndex === index && (
+              {activeIndex === index && (
                 <div 
                   ref={playerContainerRef}
                   className={`absolute  bg-gradient-to-r from-black/90 via-black/50 to-transparent z-20 inset-0 transition-opacity duration-500 ${
-                    isVideoLoaded ? 'opacity-100 lg:w-[2000px] lg:h-[1000px] lg:mt-[-130px] sm: mt-[-450px] ml-[-200px]' : 'opacity-0'
+                    isVideoLoaded ? 'opacity-100 lg:w-[2000px] lg:h-[1000px] lg:mt-[-130px] ml-[-100px]' : 'opacity-0'
                   }`}
                 />
-              )} */}
+              )}
               <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent z-20" />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-20" />
 

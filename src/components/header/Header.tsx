@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleDown, faAngleUp, faClose } from "@fortawesome/free-solid-svg-icons";
+import { faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 import { Menu } from "lucide-react";
@@ -89,11 +89,7 @@ export default function Header() {
                         Donate
                     </button>
                     <div className="sm:block lg:hidden">
-                        {isMenuOpen ? (
-                            <FontAwesomeIcon icon={faClose} className="text-white text-4xl cursor-pointer" onClick={handleMenuClick} />
-                        ) : (
-                            <Menu className="text-white cursor-pointer" strokeWidth={3} size={35} onClick={handleMenuClick} />
-                        )}
+                        <Menu className="text-white cursor-pointer" strokeWidth={3} size={35} onClick={handleMenuClick} />
                     </div>
                 </div>
             </div>

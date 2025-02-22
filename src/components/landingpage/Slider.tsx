@@ -86,13 +86,18 @@ export default function HeroSlider() {
       playerRef.current = new YT.Player(containerId, {
         videoId: videoId,
         playerVars: {
-          autoplay: 1,
-          controls: 0,
-          modestbranding: 1,
-          rel: 0,
-          playsinline: 1,
-          mute: 1,
-          enablejsapi: 1,
+          autoplay: 1,        // Start the video automatically
+          controls: 0,        // Hide controls (play, pause, etc.)
+          modestbranding: 1,  // Hide YouTube logo
+          rel: 0,             // Prevent showing related videos at the end
+          showinfo: 0,        // Hide video title and uploader info
+          iv_load_policy: 3,  // Disable annotations
+          autohide: 1,        // Hide controls automatically when video starts
+          mute: 1,            // Mute the video initially (optional, based on your preference)
+          enablejsapi: 1,     // Enable JavaScript API
+          fs: 0,              // Disable fullscreen button
+          cc_load_policy: 0,  // Disable closed captions (if any)
+          playsinline: 1,     // Play the video inline on mobile (no fullscreen mode)
         },
         events: {
           onReady: (event: any) => {
@@ -212,26 +217,16 @@ export default function HeroSlider() {
       <Swiper
         ref={swiperRef}
         modules={[Autoplay, EffectCoverflow, Pagination]}
-        effect="coverflow"
         grabCursor
         centeredSlides
         slidesPerView={1}
         loop={false}
-        coverflowEffect={{
-          rotate: 15, 
-          stretch: 0,
-          depth: 100,
-          modifier: 1,
-          slideShadows: true,
-        }}
+        
         pagination={{
           clickable: true,
-          renderBullet: (_, className) => {
-            return `<span class="${className} w-2 h-2 bg-white/50 rounded-full transition-all duration-300 hover:bg-white"></span>`;
-          },
         }}
         onSlideChange={handleSlideChange}
-        className="w-full h-[calc(100vh-31rem)] md:h-[calc(100vh-5rem)]"
+        className="w-full h-[380px] md:h-[calc(100vh-5rem)]"
       >
         {sliderData.map((item, index) => (
           <SwiperSlide key={item.objectId}>
@@ -244,56 +239,59 @@ export default function HeroSlider() {
                 <img
                   src={item.backdropURL}
                   alt={item.name}
-                  className="w-full lg:h-[full] object-cover sm: mt-20 lg:mt-0"
+                  className="w-full  sm: h-[400px] lg:h-[900px] object-cover sm: mt-20 lg:mt-0"
                 />
               </div>}
               {activeIndex === index && (
-                <div 
-                  ref={playerContainerRef}
-                  className={`absolute  bg-gradient-to-r from-black/90 via-black/50 to-transparent z-20 inset-0 transition-opacity duration-500 ${
-                    isVideoLoaded ? 'opacity-100 lg:w-[2000px] lg:h-[1000px] lg:mt-[-130px] ml-[-100px]' : 'opacity-0'
-                  }`}
-                />
-              )}
+  <div 
+    ref={playerContainerRef}
+    className={`absolute bg-gradient-to-r from-black/90 via-black/50 to-transparent z-20 inset-0 transition-opacity duration-500 ${
+      isVideoLoaded 
+        ? 'opacity-100 lg:w-[2000px] lg:h-[1000px] lg:mt-[-130px] max-h-[1000px] w-[1000px] ml-[-300px] h-full sm: top-6 lg:top-0' 
+        : 'opacity-0'
+    }`}
+  />
+)}
+
               <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent z-20" />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-20" />
 
               {activeIndex === index && (
-                <div className="absolute inset-0 flex items-center lg:top-20 z-30">
+                <div className="absolute inset-0 flex items-center lg:top-20 z-30 sm: top-18">
                   <div className="container px-4 md:px-6">
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5 }}
-                      className="max-w-4xl lg:space-y-8 sm: space-y-3"
+                      className="max-w-4xl lg:space-y-8 sm: space-y-6"
                     >
                       <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.5, delay: 0.2 }}
-                        className="lg:space-y-4 sm: space-y-2"
+                        className="lg:space-y-4 sm: space-y-4"
                       >
                         <motion.img
                           src={item.titleImage}
                           alt={item.name}
-                          className="h-14 md:h-32 object-contain"
+                          className="h-16 md:h-32 object-contain"
                           initial={{ opacity: 0, scale: 0.8 }}
                           animate={{ opacity: 1, scale: 1 }}
                           transition={{ duration: 0.5 }}
                         />
                         
                         <motion.div 
-                          className="flex items-center lg:gap-6 gap-3"
+                          className="flex items-center lg:gap-6 gap-4"
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           transition={{ duration: 0.5, delay: 0.3 }}
                         >
-                          <span className="text-emerald-400 font-semibold lg:text-lg sm: text-xs">
+                          <span className="text-emerald-400 font-semibold lg:text-lg">
                             {item.label}
                           </span>
                           {item.rating && (
                             <div className="flex items-center gap-1 text-yellow-400">
-                              <Star className="lg:w-4 lg:h-4 w-3 h-3 fill-current" />
+                              <Star className="lg:w-4 lg:h-4 w-3 h-6 fill-current" />
                               <span className="font-medium">{item.rating}</span>
                             </div>
                           )}
@@ -309,7 +307,7 @@ export default function HeroSlider() {
                             {item.genres.map((genre) => (
                               <span 
                                 key={genre}
-                                className="px-3 py-1 bg-white/10 rounded-full lg:text-sm text-xs  text-white/90"
+                                className="px-3 py-1 bg-white/10 rounded-full lg:text-sm  text-white/90"
                               >
                                 {genre}
                               </span>
@@ -338,7 +336,7 @@ export default function HeroSlider() {
                       >
                         <motion.button 
                           className={cn(
-                            "group relative inline-flex items-center gap-2 lg:px-8 lg:py-4 px-2 py-2",
+                            "group relative inline-flex items-center gap-2 lg:px-8 lg:py-4 px-3 py-2",
                             "bg-red-600 hover:bg-red-700 text-white rounded-lg",
                             "transition-all duration-300 ease-out",
                             "overflow-hidden"

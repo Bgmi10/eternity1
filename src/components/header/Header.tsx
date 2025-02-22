@@ -85,7 +85,7 @@ export default function Header() {
                     </div>
                 </div>
                 <div className="gap-2 items-center flex">
-                    <button className="relative flex items-center gap-2 bg-gradient-to-b from-red-500 to-red-600 cursor-pointer p-1 rounded-lg text-white font-semibold lg:px-4 lg:text-lg px-5 text-md transition-all duration-300 hover:shadow-[0_0_20px_rgba(229,9,20,0.7)]">
+                    <button className="relative flex items-center gap-2 bg-gradient-to-b from-red-500 to-red-600 cursor-pointer p-1 rounded-lg text-white font-semibold  lg:py-2 lg:px-9 lg:text-lg px-5 text-md transition-all duration-300 hover:shadow-[0_0_20px_rgba(229,9,20,0.7)]">
                         Donate
                     </button>
                     <div className="sm:block lg:hidden">

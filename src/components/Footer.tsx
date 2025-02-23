@@ -111,7 +111,7 @@ export default function Footer() {
                     </div>
                 </motion.div>
                 <motion.div 
-                    className="mb-22 flex lg:flex-row justify-between sm: flex-col lg:gap-52 sm: gap-2 items-center mt-4"
+                    className="sm: mb-22 lg:mb-4 flex lg:flex-row justify-between sm: flex-col lg:gap-52 sm: gap-2 items-center mt-4"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ duration: 0.8, delay: 0.6, ease: "easeInOut" }}

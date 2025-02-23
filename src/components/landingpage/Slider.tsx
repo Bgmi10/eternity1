@@ -16,7 +16,7 @@ import { sliderData } from "../../utils/constants"
 interface YouTubePlayer {
   destroy: () => void;
   mute: () => void;
-  unMute: () => void;
+  unMute: () => void; 
   playVideo: () => void;
   pauseVideo: () => void;
   getPlayerState: () => number;
@@ -221,10 +221,7 @@ export default function HeroSlider() {
         centeredSlides
         slidesPerView={1}
         loop={false}
-        
-        pagination={{
-          clickable: true,
-        }}
+        pagination={false}
         onSlideChange={handleSlideChange}
         className="w-full h-[380px] md:h-[calc(100vh-5rem)]"
       >
@@ -242,7 +239,7 @@ export default function HeroSlider() {
                   className="w-full  sm: h-[400px] lg:h-[900px] object-cover sm: mt-20 lg:mt-0"
                 />
               </div>}
-              {activeIndex === index && (
+              {/* {activeIndex === index && (
   <div 
     ref={playerContainerRef}
     className={`absolute bg-gradient-to-r from-black/90 via-black/50 to-transparent z-20 inset-0 transition-opacity duration-500 ${
@@ -251,7 +248,7 @@ export default function HeroSlider() {
         : 'opacity-0'
     }`}
   />
-)}
+)} */}
 
               <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent z-20" />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-20" />
@@ -383,6 +380,17 @@ export default function HeroSlider() {
           </SwiperSlide>
         ))}
       </Swiper>
+      <div className="flex justify-center gap-2 lg:mt-6">
+        {sliderData.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => swiperRef.current.swiper.slideTo(index)}
+            className={`w-2 h-2 rounded-full transition-all duration-300 ${
+              activeIndex  === index ? 'bg-white w-6' : 'bg-white/50'
+            }`}
+          />
+        ))}
+      </div>
       <motion.button
         onClick={toggleMute}
         className={cn(

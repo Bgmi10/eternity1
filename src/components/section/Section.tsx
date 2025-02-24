@@ -168,7 +168,7 @@ export default function EnhancedSection({ data, title }: { data: any; title: str
                       <img
                         src={item.posterPath || "/placeholder.svg"}
                         alt={`${item.title} by eternityready`}
-                        className="w-full h-full object-cover"
+                        className="w-full lg:h-full sm: h-28 object-cover"
                         onLoad={() => setTimeout(() => {handleImageLoad(item.id)}, 2000) }
                         loading="lazy"
                         style={{

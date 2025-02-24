@@ -7,7 +7,6 @@ export default function LandingPage() {
     
     return(
         <div>
-            
              <Slider data={sliderData} />
              <Section data={trendingMovies} title="Trending Movies" />
         </div>

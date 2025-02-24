@@ -138,7 +138,7 @@ export default function Header() {
 
     return (
         <>
-            <div className={`flex justify-between lg:p-2 sm: p-3 z-50 fixed top-0 left-0 right-0 lg:ml-8 items-center transition-all duration-300 lg:w-[1300px] ${isScroll ? " shadow-[0_4px_4px_rgba(0,0,0,0.3),0_8px_12px_6px_rgba(0,0,0,0.15)] backdrop-blur-3xl rounded-tl-[-100px] rounded-bl-xl rounded-br-xl" : ""}`}>
+            <div className={`flex justify-between lg:p-3 sm: p-3 z-50 fixed top-0 left-0 right-0 items-center transition-all duration-300 ${isScroll ? "shadow-[0_10px_10px_rgba(0,0,0,0.3),0_8px_12px_6px_rgba(0,0,0,0.15)] backdrop-blur-3xl rounded-tl-[-100px] rounded-bl-xl rounded-br-xl" : ""}`}>
                 <div className="flex items-center">
                     <div className="lg:text-2xl sm:text-xl font-semibold text-white gap-1 flex">
                         <img src="https://eternityready.com/templates/apollo/img/logo1USE-THIS.png" className="sm: w-[132px] lg:w-[]" alt="Logo" />

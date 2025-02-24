@@ -11,7 +11,6 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 //@ts-ignore
 import "swiper/css/pagination";
-import { sliderData } from "../../utils/constants"
 
 interface YouTubePlayer {
   destroy: () => void;
@@ -22,7 +21,19 @@ interface YouTubePlayer {
   getPlayerState: () => number;
 }
 
-export default function HeroSlider() {
+interface Data {
+  name: string;
+  storyline: string;
+  genres: string[];
+  rating: string;
+  label: string;
+  backdropURL: string;
+  titleImage: string;
+  objectId: string;
+
+}
+
+export default function HeroSlider({ data }: { data: any }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isMuted, setIsMuted] = useState(true);
   const [isYTReady, setIsYTReady] = useState(false);
@@ -96,7 +107,7 @@ export default function HeroSlider() {
           mute: 1,            // Mute the video initially (optional, based on your preference)
           enablejsapi: 1,     // Enable JavaScript API
           fs: 0,              // Disable fullscreen button
-          cc_load_policy: 0,  // Disable closed captions (if any)
+          cc_load_policy: 0,  // Disable closed  (if any)
           playsinline: 1,     // Play the video inline on mobile (no fullscreen mode)
         },
         events: {
@@ -164,7 +175,7 @@ export default function HeroSlider() {
         
         setTimeout(() => {
           if (document.getElementById(uniqueId)) {
-            const videoId = sliderData[activeIndex]?.trailerId;
+            const videoId = data[activeIndex]?.trailerId;
             if (videoId) {
               createYouTubePlayer(uniqueId, videoId);
             } else {  
@@ -225,7 +236,7 @@ export default function HeroSlider() {
         onSlideChange={handleSlideChange}
         className="w-full h-[380px] md:h-[calc(100vh-5rem)]"
       >
-        {sliderData.map((item, index) => (
+        {data.map((item: Data, index: number) => (
           <SwiperSlide key={item.objectId}>
             <div 
               className="relative w-full h-full lg:mt-0"
@@ -381,7 +392,7 @@ export default function HeroSlider() {
         ))}
       </Swiper>
       <div className="flex justify-center gap-2 lg:mt-6">
-        {sliderData.map((_, index) => (
+        {data.map((_: Data, index: number) => (
           <button
             key={index}
             onClick={() => swiperRef.current.swiper.slideTo(index)}

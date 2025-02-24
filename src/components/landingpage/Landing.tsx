@@ -1,4 +1,4 @@
-import { sliderData } from "../../utils/constants";
+import { sliderData, trendingMovies } from "../../utils/constants";
 import Section from "../section/Section";
 import Slider from "./Slider";
 
@@ -7,8 +7,9 @@ export default function LandingPage() {
     
     return(
         <div>
-             <Slider />
-             <Section data={sliderData} title="Trending Movies" />
+            
+             <Slider data={sliderData} />
+             <Section data={trendingMovies} title="Trending Movies" />
         </div>
     )
 }

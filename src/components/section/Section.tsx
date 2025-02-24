@@ -17,7 +17,7 @@ interface MovieItem {
   loaded: boolean
 }
 
-export default function EnhancedSection({ data, title }: { data: MovieItem[]; title: string }) {
+export default function EnhancedSection({ data, title }: { data: any; title: string }) {
   const [active, setActive] = useState(0)
   const [imagesPerSlide, setImagesPerSlide] = useState(4)
   const [hoveredItem, setHoveredItem] = useState<MovieItem | null>(null)
@@ -135,7 +135,7 @@ export default function EnhancedSection({ data, title }: { data: MovieItem[]; ti
           initial={{ x: 0 }}
           transition={{ type: "spring", stiffness: 200, damping: 25 }}
         >
-          {data.map((item, index) => (
+          {data.map((item: any, index: number) => (
             <motion.div
               key={item.id || index}
               className="relative flex-shrink-0 px-2"
@@ -199,7 +199,7 @@ export default function EnhancedSection({ data, title }: { data: MovieItem[]; ti
                           <span className="text-red-500">{item.duration}</span>
                         </div>
                         <div className="flex flex-wrap gap-2 mt-2">
-                          {item.genre.map((genre, idx) => (
+                          {item.genre.map((genre: any, idx: number) => (
                             <span 
                               key={idx} 
                               className="text-xs px-2 py-1 bg-gray-700/50 rounded-full text-white"

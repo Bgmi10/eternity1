@@ -8,7 +8,9 @@ export default function LandingPage() {
     return(
         <div>
              <Slider data={sliderData} />
-             <Section data={trendingMovies} title="Trending Movies" />
+             <Section
+              //@ts-ignore
+             data={trendingMovies} title="Trending Movies" />
         </div>
     )
 }

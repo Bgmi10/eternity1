@@ -261,7 +261,7 @@ export default function EnhancedSection({ data, title }: { data: MovieItem[]; ti
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth
-      if (width < 640) setImagesPerSlide(2)
+      if (width < 640) setImagesPerSlide(3)
       else if (width < 1024) setImagesPerSlide(3)
       else setImagesPerSlide(5)  // Increased from 4 to 5 for wider displays
     }

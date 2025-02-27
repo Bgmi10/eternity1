@@ -10,7 +10,7 @@ export default function LandingPage() {
              <Slider data={sliderData} />
              <Section
               //@ts-ignore
-             data={trendingMovies} title="Trending Movies" />
+             data={trendingMovies} title="Trending Movies" sectionNavigation="/section/trendingmovies"/>
         </div>
     )
 }

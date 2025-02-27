@@ -212,7 +212,7 @@ export default function EnhancedSection({ data, title, sectionNavigation }: { da
         {isMouseHoverSection && 
         <>
         <div className="bg-gradient-to-b from-black via-black/20 to-black/90"/>
-        <div className="absolute inset-y-0 -left-3 z-30 flex items-center">
+        <div className="absolute inset-y-0 -left-3 z-30 lg:flex items-center hidden">
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.95 }}
@@ -234,7 +234,7 @@ export default function EnhancedSection({ data, title, sectionNavigation }: { da
         {isMouseHoverSection &&
         <>
          <div className="bg-gradient-to-b from-black via-black/20 to-black/90"/>
-        <div className="absolute inset-y-0 -right-8  z-30 flex items-center">
+        <div className="absolute inset-y-0 -right-8  z-30 lg:flex items-center hidden">
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.95 }}
@@ -306,7 +306,7 @@ export default function EnhancedSection({ data, title, sectionNavigation }: { da
                       <img
                         src={item.posterPath}
                         alt={item.title}
-                        className="absolute inset-0 w-full object-cover transition-all duration-500 group-hover:scale-105"
+                        className="absolute inset-0 w-full h-full transition-all duration-500 group-hover:scale-105"
                         onLoad={() => setTimeout(() => handleImageLoad(item.id), 800)}
                         loading="lazy"
                         style={{

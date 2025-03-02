@@ -4,7 +4,6 @@ import LandingPage from "./components/landingpage/Landing"
 import Footer from "./components/Footer"
 import BottomNavBar from "./components/BottomNavBar"
 import NotFound from "./components/NotFound"
-import React from "react"
 
 function App() {
 

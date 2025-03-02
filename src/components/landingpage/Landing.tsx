@@ -3,7 +3,7 @@ import Section from "../section/Section";
 import Slider from "./Slider";
 import EternityReady from "../EternityReady";
 import Favorite from "./Favorite";
-import React from "react";
+
 
 export default function LandingPage() {
 
@@ -13,7 +13,7 @@ export default function LandingPage() {
           <Section
            //@ts-ignore
           data={trendingMovies} title="Trending Movies" sectionNavigation="/section/trendingmovies"/>
-          {/* <EternityReady /> */}
+          <EternityReady />
           <Favorite />
         </div>
     )

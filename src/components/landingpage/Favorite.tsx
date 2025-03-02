@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import MoviePreview3D from "./MoviePreview3D";
-import React from "react";
 
 export default function Favorite() {
   return (

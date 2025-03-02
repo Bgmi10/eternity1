@@ -3,6 +3,15 @@ import trendingImage2 from "/assets/trending-movies/2.webp";
 import trendingImage3 from "/assets/trending-movies/3.webp";
 import trendingImage4 from "/assets/trending-movies/4.webp";
 import trendingImage5 from "/assets/trending-movies/5.webp";
+import imgradio1 from "/assets/radio/1.webp";
+import imgradio2 from "/assets/radio/2.webp";
+import imgradio3 from "/assets/radio/3.webp";
+import imgradio4 from "/assets/radio/4.webp";
+import imgradio5 from "/assets/radio/5.webp";
+import imgradio6 from "/assets/radio/6.webp";
+import imgradio7 from "/assets/radio/7.webp";
+import imgradio8 from "/assets/radio/8.webp";
+import imgradio9 from "/assets/radio/9.webp";
 
 export const sliderData =  [
         {
@@ -177,4 +186,22 @@ export const trendingMovies = [
         youtubeId: "bezLq9ykMlQ",
         rating: 2.2
     },  
+]
+
+export const reviews_1 = [
+    imgradio1,
+    imgradio2,
+    imgradio3
+];
+
+export const reviews_2 = [
+    imgradio4,
+    imgradio5,
+    imgradio6,
+]
+
+export const reviews_3 = [
+    imgradio7,
+    imgradio8,
+    imgradio9,
 ]

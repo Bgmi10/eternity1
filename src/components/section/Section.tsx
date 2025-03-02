@@ -3,6 +3,7 @@ import { Star, Play, X, Info, Heart, ChevronLeft, ChevronRight } from "lucide-re
 import { motion, AnimatePresence, useAnimation } from "framer-motion"
 import eternityLogo from "/assets/ETERNITY.webp";
 import { useNavigate } from "react-router-dom";
+import React from "react";
 interface MovieItem {
   id: string
   posterPath: string
@@ -161,36 +162,37 @@ export default function EnhancedSection({ data, title, sectionNavigation }: { da
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="mb-8"
+        className="lg:mb-8 mb-4"
       >
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center lg:gap-6 sm: gap-2">
             <h2 className="text-xl lg:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-100 via-gray-300 to-gray-500 drop-shadow-lg">
               {title}
             </h2>
-            <button className="text-teal-500 lg:mt-1 lg:text-lg cursor-pointer sm: text-md flex items-center font-medium transition-all duration-300 hover:scale-110" onClick={() => navigate(sectionNavigation)}>
-              View More
-              <ChevronRight className="lg:w-6 lg:h-6 sm: w-4 sm: h-4 text-teal-500 mt-1 transition-transform duration-300 ease-out" />
-            </button>
           </div>
-
-          <div className="hidden md:flex items-center gap-2 bg-black/30 backdrop-blur-md rounded-full p-1 border border-white/10 shadow-lg">
-            {Array.from({ length: Math.min(5, totalSlides) }).map((_, idx) => (
-              <motion.button
-                key={idx}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  active === idx ? 'bg-red-500 w-6' : 'bg-white/30 hover:bg-white/50'
-                }`}
-                onClick={() => {
-                  setActive(idx);
-                  controls.start({ x: `-${idx * 100}%` });
-                }}
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.9 }}
-                aria-label={`Go to slide ${idx + 1}`}
-                aria-current={active === idx ? "true" : "false"}
-              />
-            ))}
+         <div className="flex items-center gap-3">
+            <button className="text-teal-500 lg:mt-1 lg:text-lg cursor-pointer sm: text-sm flex items-center font-medium transition-all duration-300 hover:group hover:translate-x-2" onClick={() => navigate(sectionNavigation)}>
+              View More
+              <ChevronRight className="lg:w-6 lg:h-6 sm: w-5 sm: h-5 text-teal-500 lg:mt-[3px] sm: mt-0 transition-transform duration-300 ease-out " />
+            </button>
+            <div className="hidden md:flex items-center gap-2 bg-black/30 backdrop-blur-md rounded-full p-1 border border-white/10 shadow-lg">
+              {Array.from({ length: Math.min(5, totalSlides) }).map((_, idx) => (
+                <motion.button
+                  key={idx}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    active === idx ? 'bg-red-500 w-6' : 'bg-white/30 hover:bg-white/50'
+                  }`}
+                  onClick={() => {
+                    setActive(idx);
+                    controls.start({ x: `-${idx * 100}%` });
+                  }}
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 0.9 }}
+                  aria-label={`Go to slide ${idx + 1}`}
+                  aria-current={active === idx ? "true" : "false"}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </motion.div>

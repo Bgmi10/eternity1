@@ -2,8 +2,10 @@ import Header from "./components/header/Header"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import LandingPage from "./components/landingpage/Landing"
 import Footer from "./components/Footer"
-import EternityReady from "./components/EternityReady"
 import BottomNavBar from "./components/BottomNavBar"
+import NotFound from "./components/NotFound"
+import React from "react"
+
 function App() {
 
   return (
@@ -14,9 +16,9 @@ function App() {
        <Router>
          <Routes>
             <Route path="/" element={<LandingPage /> } />
+            <Route path="*" element={<NotFound /> } />
          </Routes>
        </Router>
-       <EternityReady />
        <Footer />
      </div>
     </>

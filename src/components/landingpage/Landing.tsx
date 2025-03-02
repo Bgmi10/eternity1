@@ -1,16 +1,20 @@
 import { sliderData, trendingMovies } from "../../utils/constants";
 import Section from "../section/Section";
 import Slider from "./Slider";
+import EternityReady from "../EternityReady";
+import Favorite from "./Favorite";
+import React from "react";
 
 export default function LandingPage() {
 
-    
     return(
         <div>
-             <Slider data={sliderData} />
-             <Section
-              //@ts-ignore
-             data={trendingMovies} title="Trending Movies" sectionNavigation="/section/trendingmovies"/>
+          <Slider data={sliderData} />
+          <Section
+           //@ts-ignore
+          data={trendingMovies} title="Trending Movies" sectionNavigation="/section/trendingmovies"/>
+          {/* <EternityReady /> */}
+          <Favorite />
         </div>
     )
 }

@@ -55,7 +55,7 @@ export default function Header() {
                       <span className={`hover:bg-white cursor-pointer hover:text-black p-3 rounded-lg px-4 py-2 ${currentTab === "home" ? "bg-white text-black" : ""}`} onClick={() =>{
                         navigate("/")
                         setCurrentTab("home")}}>Home</span>
-                         <span className={`hover:bg-white cursor-pointer hover:text-black p-3 rounded-lg px-4 py-2 ${currentTab === "moviesr" ? "bg-white text-black" : ""}`} onClick={() =>{
+                         <span className={`hover:bg-white cursor-pointer hover:text-black p-3 rounded-lg px-4 py-2 ${currentTab === "movies" ? "bg-white text-black" : ""}`} onClick={() =>{
                         navigate("/movies")
                         setCurrentTab("movies")}}>Movies</span>
                     </div>

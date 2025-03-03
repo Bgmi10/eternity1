@@ -13,9 +13,9 @@ function App() {
       <Header />
       <BottomNavBar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/movies" element={<MoviesHome />} />
-        <Route path="/tv" element={<HomePage />} />
+        {/* <Route path="/tv" element={<HomePage />} /> */}
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

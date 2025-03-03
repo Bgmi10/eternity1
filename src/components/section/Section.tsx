@@ -265,7 +265,7 @@ export default function EnhancedSection({ data, title, sectionNavigation }: { da
           {data.map((item: MovieItem, index: number) => (
             <motion.div
               key={item.id || index}
-              className="relative flex-shrink-0 px-1"
+              className="relative flex-shrink-0 px-2"
               style={{ 
                 width: getItemWidth(index),
                 transition: 'all 0.4s ease-out'

@@ -48,6 +48,12 @@
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-0"></div>
             
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="absolute">
+              <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent z-0"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-0"></div>
+               <video src="https://images-tv.adobe.com/mpcv3/1041/28228a8c-adc2-47a8-89ab-bc4323132f0d_1738103371.1280x720at2000_h264.mp4#_autoplay" autoPlay title="YouTube video player" loop></video>
+               
+              </div>
               <div className="flex flex-col lg:flex-row items-center">
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}

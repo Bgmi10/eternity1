@@ -1,18 +1,24 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
-import { Menu } from "lucide-react";
 import MobileDrawer from "./MobileDrawer";
 import { useNavigate } from "react-router-dom";
+import { 
+    Film, 
+    Tv, 
+    Podcast,
+    Search, 
+    Menu,
+    Home
+  } from 'lucide-react';
 
 export default function Header() {
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isScroll, setIsScroll] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const drawerRef = useRef(null);
     const [currentTab, setCurrentTab] = useState("home");
     const navigate = useNavigate();
+    //@ts-ignore
+    const [hoveredSection, setHoveredSection] = useState<string | null>(null)
 
     const handleScroll = () => {
         const isScrollFromTop = window.scrollY > 0;
@@ -28,6 +34,34 @@ export default function Header() {
         setIsMenuOpen((prev) => !prev);
     };
 
+    const navSections = [
+        {
+            id: "home",
+            label: "Home",
+            icon: Home,
+            route: "/",
+        },
+        { 
+          id: 'movies', 
+          label: 'Movies', 
+          icon: Film,
+          route: '/movies'
+        },
+        { 
+          id: 'series', 
+          label: 'TV Series', 
+          icon: Tv,
+          route: '/series'
+        },
+        { 
+          id: 'podcast', 
+          label: 'Podcast', 
+          icon: Podcast,
+          route: '/podcast'
+        }
+      ];
+    
+
     useEffect(() => {
         const handleClickOutside = (event: any) => {
             //@ts-ignore
@@ -39,75 +73,86 @@ export default function Header() {
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
-    return (
-        <>
-            <div
-             className={`flex justify-between lg:p-3 sm:p-3 z-50 fixed top-0 left-0 right-0 items-center transition-all duration-300 
-             ${isScroll ? "backdrop-blur-3xl bg-black/80 rounded-br-xl" : ""}`}
-             >
-                <div className="flex items-center">
-                    <div className="lg:text-rxl sm:text-xl font-bold text-white gap-1 flex">
-                        <span>Eternity <span className="text-red-500">Ready</span></span>
-                    </div>
-                </div>
-                <div className="lg:flex items-center gap-8 text-white font-semibold sm: hidden">
-                    <div className="gap-3 flex"> 
-                      <span className={`hover:bg-white cursor-pointer hover:text-black p-3 rounded-lg px-4 py-2 ${currentTab === "home" ? "bg-white text-black" : ""}`} onClick={() =>{
-                        navigate("/")
-                        setCurrentTab("home")}}>Home</span>
-                         <span className={`hover:bg-white cursor-pointer hover:text-black p-3 rounded-lg px-4 py-2 ${currentTab === "movies" ? "bg-white text-black" : ""}`} onClick={() =>{
-                        navigate("/movies")
-                        setCurrentTab("movies")}}>Movies</span>
-                    </div>
-                    <div
-                        className="flex gap-2 items-center hover:text-red-500 relative cursor-pointer"
-                        onMouseEnter={() => setIsDropdownOpen(true)}
-                        onMouseLeave={() => setIsDropdownOpen(false)}
-                    >
-                        <span>Demand</span>
-                        <motion.div transition={{ type: "spring", stiffness: 300 }}>
-                            <FontAwesomeIcon icon={!isDropdownOpen ? faAngleDown : faAngleUp} />
-                        </motion.div>
-                        {isDropdownOpen && (
-                            <motion.div
-                                className="absolute top-full left-0 mt-3 w-48 bg-gray-900 text-white rounded-lg overflow-hidden shadow-lg"
-                                initial={{ opacity: 0, scale: 0.9, y: -10 }}
-                                animate={{ opacity: 1, scale: 1, y: 0 }}
-                                exit={{ opacity: 0, scale: 0.9, y: -10 }}
-                                transition={{ duration: 0.3, ease: "easeOut" }}
-                            >
-                                {["Option 1", "Option 2", "Option 3"].map((item, index) => (
-                                    <motion.div
-                                        key={index}
-                                        className="p-3 hover:bg-gray-800 cursor-pointer flex items-center"
-                                        whileHover={{ scale: 1.05, x: 8 }}
-                                        transition={{ type: "spring", stiffness: 300 }}
-                                    >
-                                        {item}
-                                    </motion.div>
-                                ))}
-                            </motion.div>
-                        )}
-                    </div>
-                    <div className="flex gap-2 items-center">
-                        <span>Podcast</span>
-                        <FontAwesomeIcon icon={faAngleDown} />
-                    </div>
-                    <div className="flex gap-2 items-center">
-                        <span>Tv Series</span>
-                        <FontAwesomeIcon icon={faAngleDown} />
-                    </div>
-                </div>
-                <div className="gap-2 items-center flex">
-                    <button className="relative flex items-center gap-2 bg-gradient-to-b from-red-500 to-red-600 cursor-pointer p-1 rounded-sm text-white font-semibold  lg:py-1 lg:px-6 lg:text-lg px-5 text-md transition-all duration-300 hover:shadow-[0_0_20px_rgba(229,9,20,0.7)]">
-                        Donate
-                    </button>
-                    <div className="sm:block lg:hidden">
-                        <Menu className="text-white cursor-pointer" strokeWidth={3} size={35} onClick={handleMenuClick} />
-                    </div>
-                </div>
+      return (
+        <motion.header 
+          className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+            isScroll 
+              ? 'bg-black/60 backdrop-blur-xl shadow-2xl' 
+              : 'bg-transparent'
+          }`}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="max-w-7xl lg:mx-auto px-2 py-3 flex justify-between items-center">
+            {/* Logo */}
+            <motion.div 
+              className="flex items-center"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: 'spring', stiffness: 300 }}
+            >
+              <img 
+                src="https://eternityready.com/templates/apollo/img/logo1USE-THIS.png" 
+                alt="Entertainment Hub Logo" 
+                className="lg:w-40 w-32 ml-2"
+              />
+            </motion.div>
+    
+            {/* Navigation */}
+            <nav className="lg:flex items-center space-x-8 hidden">
+              {navSections.map((section) => (
+                <motion.div 
+                  key={section.id}
+                  className="relative group"
+                  onMouseEnter={() => setHoveredSection(section.id)}
+                  onMouseLeave={() => setHoveredSection(null)}
+                >
+                  <motion.button
+                    onClick={() => {
+                      setCurrentTab(section.id);
+                      navigate(section.route);
+                    }}
+                    className={`
+                      flex items-center gap-2 text-white font-semibold 
+                      transition-all duration-300 
+                      ${currentTab === section.id 
+                        ? 'text-red-500 scale-105' 
+                        : 'hover:text-red-500'}
+                    `}
+                  >
+                    <section.icon 
+                      className={`
+                        ${currentTab === section.id 
+                          ? 'text-red-500' 
+                          : 'text-white group-hover:text-red-500'}
+                      `} 
+                      size={24} 
+                    />
+                    {section.label}
+                  </motion.button>
+                </motion.div>
+              ))}
+            </nav>
+            <div className="flex items-center sm: gap-2">
+              <motion.button 
+                className="text-white hover:text-red-500 transition-colors"
+                whileHover={{ scale: 1.2 }}
+              >
+                <Search size={24} />
+              </motion.button>
+              
+             
+              <motion.button 
+                className="bg-red-600 text-white lg:px-4 lg:py-2 px-3 py-1 rounded-3xl lg:rounded-full 
+                  flex items-center gap-2 hover:bg-red-700 transition-all cursor-pointer font-semibold"
+                onClick={() => navigate('/account')}
+              >
+               Donate Now
+              </motion.button>
+                <Menu onClick={handleMenuClick} className="text-white cursor-pointer"/>
+              <MobileDrawer drawerRef={drawerRef}  handleMenuClick={handleMenuClick} isMenuOpen={isMenuOpen}  />
             </div>
-           <MobileDrawer isMenuOpen={isMenuOpen} drawerRef={drawerRef} handleMenuClick={handleMenuClick} />
-        </>
-    );
-}
+          </div>
+        </motion.header>
+      );
+    }

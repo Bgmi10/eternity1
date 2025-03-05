@@ -41,16 +41,16 @@ export default function MobileDrawer({ isMenuOpen, drawerRef, handleMenuClick }:
                                     <h2 className="text-2xl font-bold">Menu</h2>
                                     <button
                                         onClick={handleMenuClick}
-                                        className="p-2 hover:bg-gray-800 rounded-full transition-all duration-200"
+                                        className="p-2 rounded-full transition-all duration-200"
                                     >
-                                        <FontAwesomeIcon icon={faClose} className="text-white text-2xl" />
+                                        <FontAwesomeIcon icon={faClose} className="text-white text-2xl cursor-pointer" />
                                     </button>
                                 </div>
                                 <ul className="space-y-4">
                                     {["Movies", "Podcast", "Tv Series", "Demand"].map((item, index) => (
                                         <motion.li
                                             key={index}
-                                            className="text-lg hover:text-white cursor-pointer p-3 rounded-lg hover:bg-gray-800 transition-all duration-200"
+                                            className="text-lg hover:text-white cursor-pointer p-3 rounded-lg hover:bg-gray-900 transition-all duration-200"
                                             transition={{ type: "spring", stiffness: 300 }}
                                         >
                                             {item}

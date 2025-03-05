@@ -308,7 +308,7 @@ export default function EnhancedSection({ data, title, sectionNavigation }: { da
                       <img
                         src={item.posterPath}
                         alt={item.title}
-                        className="absolute inset-0 w-full h-full transition-all duration-500 group-hover:scale-105"
+                        className="absolute inset-0 h-full transition-all duration-500 group-hover:scale-105"
                         onLoad={() => setTimeout(() => handleImageLoad(item.id), 800)}
                         loading="lazy"
                         style={{

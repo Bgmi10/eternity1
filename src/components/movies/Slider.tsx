@@ -260,8 +260,8 @@ export default function HeroSlider({ data }: { data: any }) {
     }`}
   />
 )} */}
-
-              <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent z-20" />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/50 to-transparent z-20" />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-transparent z-20" />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-20" />
 
               {activeIndex === index && (
@@ -344,7 +344,7 @@ export default function HeroSlider({ data }: { data: any }) {
                       >
                         <motion.button 
                           className={cn(
-                            "group relative inline-flex items-center gap-2 lg:px-8 lg:py-4 px-3 py-2",
+                            "group relative inline-flex items-center gap-2 lg:px-4 lg:py-2 px-3 py-2",
                             "bg-red-600 hover:bg-red-700 text-white rounded-lg",
                             "transition-all duration-300 ease-out",
                             "overflow-hidden"
@@ -361,7 +361,7 @@ export default function HeroSlider({ data }: { data: any }) {
 
                         <motion.button 
                           className={cn(
-                            "lg:p-4 p-3 bg-white/10 hover:bg-white/20 text-white rounded-full",
+                            "lg:p-3 p-3 bg-white/10 hover:bg-white/20 text-white rounded-full",
                             "backdrop-blur-md transition-all duration-300",
                             "border border-white/20"
                           )}
@@ -373,7 +373,7 @@ export default function HeroSlider({ data }: { data: any }) {
 
                         <motion.button 
                           className={cn(
-                            "lg:p-4 p-3 bg-white/10 hover:bg-white/20 text-white rounded-full",
+                            "lg:p-3 p-3 bg-white/10 hover:bg-white/20 text-white rounded-full",
                             "backdrop-blur-md transition-all duration-300",
                             "border border-white/20"
                           )}

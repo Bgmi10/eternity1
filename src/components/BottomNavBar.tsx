@@ -1,18 +1,19 @@
 import { useState } from "react";  
 import { motion } from "framer-motion";  
-import { FaFilm, FaTv, FaPodcast, FaMusic } from "react-icons/fa"; 
+import { FaFilm, FaTv, FaPodcast, FaHome } from "react-icons/fa"; 
 import { FaRadio } from "react-icons/fa6";  
 import { cn } from "../lib/utils";  
+import { useNavigate } from "react-router-dom";
 
 export default function BottomNavBar() {      
     const [activeTab, setActiveTab] = useState(0);              
-
+    const navigate = useNavigate();
     const menuItems = [
-        { name: "Movies", icon: <FaFilm size={24} /> },            
+        { name: "Home", icon: <FaHome size={24} />, link: "/" },
+        { name: "Movies", icon: <FaFilm size={24} /> , link: "/movies"},            
         { name: "Series", icon: <FaTv size={24} /> },            
         { name: "Podcast", icon: <FaPodcast size={24} /> },            
         { name: "Radio", icon: <FaRadio size={24} /> },            
-        { name: "Music", icon: <FaMusic size={24} /> }
     ];             
 
     return (                  
@@ -28,7 +29,7 @@ export default function BottomNavBar() {
             )}
         >
             <div className="flex justify-between items-center max-w-lg mx-auto">
-                {menuItems.map((item, index) => (
+                {menuItems.map((item: any, index: number) => (
                     <motion.button 
                         key={index} 
                         className={cn(
@@ -37,7 +38,9 @@ export default function BottomNavBar() {
                             "active:opacity-80", 
                             "transition-all duration-200"
                         )}
-                        onClick={() => setActiveTab(index)}
+                        onClick={() => {
+                            navigate(item.link);
+                            setActiveTab(index)}}
                         whileTap={{ scale: 0.9 }}
                     >
                         <motion.div

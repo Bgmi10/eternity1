@@ -134,7 +134,7 @@ export default function Section2({ data }: { data: Data[] }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute left-0 top-40 -translate-y-1/2 z-20 bg-black/80 hover:bg-black text-white rounded-full p-2 shadow-lg -ml-4 backdrop-blur-sm"
+            className="absolute left-0 top-20 lg:top-40 -translate-y-1/2 z-20 bg-black/80 hover:bg-black text-white rounded-full p-2 shadow-lg -ml-4 backdrop-blur-sm"
             onClick={scrollLeft20}
           >
             <ChevronLeft className="h-6 w-6" />
@@ -147,7 +147,7 @@ export default function Section2({ data }: { data: Data[] }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute right-0 top-40 -translate-y-1/2 z-20 bg-black/80 hover:bg-black text-white rounded-full p-2 shadow-lg -mr-4 backdrop-blur-sm"
+            className="absolute right-0 top-20 lg:top-40 -translate-y-1/2 z-20 bg-black/80 hover:bg-black text-white rounded-full p-2 shadow-lg -mr-4 backdrop-blur-sm"
             onClick={scrollRight20}
           >
             <ChevronRight className="h-6 w-6" />
@@ -195,14 +195,14 @@ export default function Section2({ data }: { data: Data[] }) {
                 <img
                   src={item.posterPath}
                   alt={item.title || `Item ${item.id}`}
-                  className="w-[23] h-full object-cover shadow-md"
+                  className="lg:w-full sm: w-[130px] h-full object-cover shadow-md"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/0 to-black/90 transition-all duration-300" />
               </div>
 
               {/* Ranking Number - Top Left with design elements */}
-              <div className="absolute top-3 left-3 z-10">
+              <div className="absolute top-2 left-1 lg:top-3 lg:left-3 z-10">
                 <div className="relative">
                   {/* Background circle with glow effect */}
                   <div
@@ -212,15 +212,15 @@ export default function Section2({ data }: { data: Data[] }) {
                   />
 
                   {/* Main number container */}
-                  <div className="relative flex items-center justify-center w-12 h-12 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full shadow-lg border-2 border-white/20">
-                    <span className="font-extrabold text-4xl text-white">{item.id}</span>
+                  <div className="relative flex items-center justify-center lg:w-12 lg:h-12 h-6 w-6 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full shadow-lg border-2 border-white/20">
+                    <span className="font-extrabold text-xl lg:text-4xl text-white">{item.id}</span>
                   </div>
                 </div>
               </div>
 
               {/* Title at bottom with improved visibility */}
               {item.title && (
-                <div className="absolute bottom-0 left-0 right-0 p-4 text-white transform transition-transform duration-300 ">
+                <div className="absolute bottom-0 lg:bottom-0 left-0 right-0 p-4 text-white transform transition-transform duration-300 ">
                   <p className="font-medium truncate text-shadow hover:translate-y-0 translate-y-2">{item.title}</p>
                  
                 </div>
@@ -230,7 +230,7 @@ export default function Section2({ data }: { data: Data[] }) {
 
           {/* Add a "See all" card at the end */}
           <motion.div
-            className="relative flex-shrink-0 w-[80px] h-[250px] rounded-lg border-2 border-dashed border-gray-700 flex flex-col items-center justify-center cursor-pointer hover:border-teal-500 transition-colors duration-300"
+            className="relative flex-shrink-0 lg:w-[80px] lg:h-[250px] rounded-lg border-2 border-dashed border-gray-700 flex flex-col items-center justify-center cursor-pointer hover:border-teal-500 transition-colors duration-300"
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.8 }}
           >

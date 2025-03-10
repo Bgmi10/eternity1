@@ -308,7 +308,7 @@ export default function EnhancedSection({ data, title, sectionNavigation }: { da
                       <img
                         src={item.posterPath}
                         alt={item.title}
-                        className="absolute inset-0 h-full transition-all duration-500 group-hover:scale-105"
+                        className="absolute inset-0 h-full transition-all duration-500 group-hover:scale-105 sm: w-full lg:w-full"
                         onLoad={() => setTimeout(() => handleImageLoad(item.id), 800)}
                         loading="lazy"
                         style={{
@@ -317,7 +317,6 @@ export default function EnhancedSection({ data, title, sectionNavigation }: { da
                         }}
                       />
                       
-                      {/* Enhanced Poster Gradients */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-70 group-hover:opacity-80 transition-opacity duration-300" />
                       <div className="absolute inset-0 bg-gradient-to-br from-red-600/20 via-transparent to-blue-600/20 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       

@@ -1,7 +1,7 @@
-import { sliderData, trendingMovies } from "../../utils/constants";
+import { sliderData, trendingMovies, mostWatched } from "../../utils/constants";
 import Section from "../section/Section";
 import Slider from "./Slider";
-
+import Section2 from "../section/Section2"
 
 export default function MoviesHome() {
 
@@ -11,6 +11,9 @@ export default function MoviesHome() {
           <Section
            //@ts-ignore
           data={trendingMovies} title="Trending Movies" sectionNavigation="/section/trendingmovies"/>
+          <Section2 
+           //@ts-ignore
+          data={mostWatched} />
         </div>
     )
 }

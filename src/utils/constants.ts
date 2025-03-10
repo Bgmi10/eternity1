@@ -205,3 +205,40 @@ export const reviews_3 = [
     imgradio8,
     imgradio9,
 ]
+
+export const mostWatched = [
+    {
+        id: 1,
+        posterPath: "/assets/most-watch/1.webp",
+        title: "Forever loving jah"
+    },
+    {
+        id: 2,
+        posterPath: "/assets/most-watch/2.webp",
+        title: "Who is Jesus"
+    },
+    {
+        id: 3,
+        posterPath: "/assets/most-watch/3.webp",
+        title: "Chris tomlin-noel"
+    },
+    {
+     id: 4,
+     posterPath: "/assets/most-watch/4.webp" ,
+     title: "Hand in hand by Richie" 
+    },
+    {
+        id: 5,
+        posterPath: "/assets/most-watch/5.webp",
+        title: "Rascal Flatts-my wish"  
+    },
+    {
+        id: 6,
+        posterPath: "/assets/most-watch/6.webp",
+        title: "Lauren Daigle:trusting"
+    },
+    {
+        id: 7,
+        posterPath: "/assets/most-watch/7.webp"  
+    }
+]

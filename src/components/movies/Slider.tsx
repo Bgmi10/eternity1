@@ -250,7 +250,7 @@ export default function HeroSlider({ data }: { data: any }) {
                   className="w-full  sm: h-[400px] lg:h-[900px] object-cover sm: mt-20 lg:mt-0"
                 />
               </div>}
-              {/* {activeIndex === index && (
+              {activeIndex === index && (
   <div 
     ref={playerContainerRef}
     className={`absolute bg-gradient-to-r from-black/90 via-black/50 to-transparent z-20 inset-0 transition-opacity duration-500 ${
@@ -259,7 +259,7 @@ export default function HeroSlider({ data }: { data: any }) {
         : 'opacity-0'
     }`}
   />
-)} */}
+)}
               <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/50 to-transparent z-20" />
               <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-transparent z-20" />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-20" />

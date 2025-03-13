@@ -88,7 +88,7 @@ export default function Header() {
                     <button className="relative flex items-center gap-2 bg-gradient-to-b from-red-500 to-red-600 cursor-pointer p-1 rounded-lg text-white font-semibold  lg:py-1 lg:px-6 lg:text-lg px-5 text-md transition-all duration-300 hover:shadow-[0_0_20px_rgba(229,9,20,0.7)]">
                         Donate
                     </button>
-                    <div className="sm:block lg:hidden">
+                    <div className="">
                         <Menu className="text-white cursor-pointer" strokeWidth={3} size={35} onClick={handleMenuClick} />
                     </div>
                 </div>

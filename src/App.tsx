@@ -4,7 +4,6 @@ import MoviesHome from "./components/movies/MoviesHome";
 import Footer from "./components/Footer";
 import BottomNavBar from "./components/BottomNavBar";
 import NotFound from "./components/NotFound";
-import Home from "./components/home/Home";
 
 function App() {
   return (
@@ -12,8 +11,7 @@ function App() {
       <Header />
       <BottomNavBar />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/movies" element={<MoviesHome />} />
+        <Route path="/" element={<MoviesHome />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

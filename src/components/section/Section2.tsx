@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { Star, FlameIcon as Fire, ChevronLeft, ChevronRight } from "lucide-react"
 import { motion, useAnimationControls } from "framer-motion"
 import { useState, useRef, useEffect } from "react"

@@ -104,7 +104,6 @@ export default function Section2({ data }: { data: Data[] }) {
       {/* Header with badge */}
       <div className="flex items-center justify-between">
         <div className="flex flex-col">
-          <span className="text-xs uppercase tracking-wider text-white font-semibold">Trending now</span>
           <h2 className="font-bold  text-xl lg:text-4xl bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent flex items-center gap-2">
             Most Watched
             <div className="inline-flex items-center justify-center">

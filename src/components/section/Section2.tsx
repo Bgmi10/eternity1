@@ -1,10 +1,8 @@
 "use client"
-
 import type React from "react"
 import { Star, FlameIcon as Fire, ChevronLeft, ChevronRight } from "lucide-react"
 import { motion, useAnimationControls } from "framer-motion"
 import { useState, useRef, useEffect } from "react"
-
 interface Data {
   id: number
   posterPath: string
@@ -21,7 +19,6 @@ export default function Section2({ data }: { data: Data[] }) {
   const [scrollLeft, setScrollLeft] = useState(0)
   const controls = useAnimationControls()
 
-  // Check if we need to show scroll indicators
   useEffect(() => {
     const checkScroll = () => {
       if (!scrollContainerRef.current) return

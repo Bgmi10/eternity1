@@ -471,11 +471,10 @@
 //     </div>
 //   );
 // }
-import { Smartphone, Laptop, Tv, Tablet } from 'lucide-react';
 
 export default function DownloadApp() {
   return (
-    <div className="py-20 bg-gradient-to-t from-gray-600 via-black to-black text-white">
+    <div className="py-8 mt-10 mb-52 bg-gradient-to-t from-gray-400/20 via-black to-black text-white">
       <div className="container mx-auto px-4 md:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between gap-12">
         
         {/* Left side - Image */}
@@ -502,21 +501,18 @@ export default function DownloadApp() {
           
           {/* Device icons */}
           <div className="flex flex-wrap justify-start gap-6">
-            <div className="flex flex-col items-center">
-              <Smartphone size={32} className="text-red-600 mb-2" />
-              <span className="text-sm">Mobile</span>
+          <div className="flex flex-col items-center ">
+             <img src="https://img.icons8.com/?size=48&id=txrCBRXRoE2b&format=png" />
+              <span className="text-sm">Roku tv</span>
             </div>
             <div className="flex flex-col items-center">
-              <Laptop size={32} className="text-red-600 mb-2" />
-              <span className="text-sm">Desktop</span>
+             <img src="https://img.icons8.com/?size=48&id=nKPTBtE1Kt27&format=png" />
+              <span className="text-sm">Smart Tv</span>
             </div>
+            
             <div className="flex flex-col items-center">
-              <Tv size={32} className="text-red-600 mb-2" />
-              <span className="text-sm">Smart TV</span>
-            </div>
-            <div className="flex flex-col items-center">
-              <Tablet size={32} className="text-red-600 mb-2" />
-              <span className="text-sm">Tablet</span>
+              <img src="https://img.icons8.com/?size=48&id=IV1Fcbm30EBb&format=png" />
+              <span className="text-sm">Fire Tv</span>
             </div>
           </div>
           

@@ -45,35 +45,35 @@ export default function HeroSlider({ data }: { data: any }) {
   const swiperRef = useRef<any>(null);
   const activePlayerIdRef = useRef<string | null>(null);
   
-  // useEffect(() => {
-  //   const loadYouTubeAPI = () => {
-  //     if (!(window as any).YT) {
-  //       const tag = document.createElement("script");
-  //       tag.src = "https://www.youtube.com/iframe_api";
-  //       const firstScriptTag = document.getElementsByTagName("script")[0];
-  //       firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
+  useEffect(() => {
+    const loadYouTubeAPI = () => {
+      if (!(window as any).YT) {
+        const tag = document.createElement("script");
+        tag.src = "https://www.youtube.com/iframe_api";
+        const firstScriptTag = document.getElementsByTagName("script")[0];
+        firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
       
-  //       (window as any).onYouTubeIframeAPIReady = () => {
-  //         setIsYTReady(true);
-  //       };
-  //     } else if ((window as any).YT && (window as any).YT.Player) {
-  //       setIsYTReady(true);
-  //     }
-  //   };
+        (window as any).onYouTubeIframeAPIReady = () => {
+          setIsYTReady(true);
+        };
+      } else if ((window as any).YT && (window as any).YT.Player) {
+        setIsYTReady(true);
+      }
+    };
 
-  //   loadYouTubeAPI();
+    loadYouTubeAPI();
 
-  //   return () => {
-  //     if (playerRef.current) {
-  //       try {
-  //         playerRef.current.destroy();
-  //       } catch (error) {
-  //         console.error("Error destroying player:", error);
-  //       }
-  //       playerRef.current = null;
-  //     }
-  //   };
-  // }, []);
+    return () => {
+      if (playerRef.current) {
+        try {
+          playerRef.current.destroy();
+        } catch (error) {
+          console.error("Error destroying player:", error);
+        }
+        playerRef.current = null;
+      }
+    };
+  }, []);
 
   const createYouTubePlayer = (containerId: string, videoId: string) => {
     if (!videoId) {

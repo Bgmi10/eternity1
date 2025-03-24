@@ -1,9 +1,7 @@
   import { motion } from "framer-motion";
-  import { 
-    ChevronRight, ChevronLeft, Play, Info, Heart, Star, 
-    MonitorSmartphone, Radio, Headphones, Music, 
-  Tv
-  } from "lucide-react";
+  import { ChevronRight, ChevronLeft, Play, Info, Heart, Star, MonitorSmartphone } from "lucide-react";
+  import DiscoverContent from "../movies/DiscoverContent";
+  import PopularContent from "../movies/PopularContent";
 
   export default function Home() {
     // Animation variants
@@ -326,109 +324,7 @@
             </div>
           </section>
 
-          {/* Content Categories Section */}
-          <section className="py-16">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <motion.div 
-                className="text-center mb-16"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeIn}
-                transition={{ duration: 0.8 }}
-              >
-                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Discover Content</h2>
-                <div className="h-1 w-24 bg-red-500 mx-auto mb-8"></div>
-                <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-                  Explore our diverse range of faith-building content across multiple formats
-                </p>
-              </motion.div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <motion.div 
-                  className="relative overflow-hidden rounded-lg group cursor-pointer"
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  variants={fadeIn}
-                  transition={{ duration: 0.8, delay: 0.1 }}
-                  whileHover={{ y: -10 }}
-                >{
-                  
-                }
-                  <div className="absolute inset-0 bg-gradient-to-t from-black to-black/30 z-10"></div>
-                  <img src="https://m.media-amazon.com/images/G/31/AmazonVideo/2019/MLP._SX1440_CR575,0,865,675_QL80_AC_FP_.jpg" alt="Christian TV" className="w-full h-60 object-cover group-hover:scale-110 transition duration-500" />
-                  <div className="absolute bottom-0 left-0 p-6 z-20">
-                    <div className="flex items-center gap-3 mb-2">
-                      <Tv size={24} className="text-red-500" />
-                      <h3 className="text-xl font-bold text-white">Christian TV</h3>
-                    </div>
-                    <p className="text-gray-300 text-sm">Faith-based shows & series</p>
-                  </div>
-                </motion.div>
-
-                <motion.div 
-                  className="relative overflow-hidden rounded-lg group cursor-pointer"
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  variants={fadeIn}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                  whileHover={{ y: -10 }}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-t from-black to-black/30 z-10"></div>
-                  <img src="https://eternityready.net/assets/images/channels/3.webp" alt="Radio Stations" className="w-full h-60 object-cover group-hover:scale-110 transition duration-500" />
-                  <div className="absolute bottom-0 left-0 p-6 z-20">
-                    <div className="flex items-center gap-3 mb-2">
-                      <Radio size={24} className="text-red-500" />
-                      <h3 className="text-xl font-bold text-white">Radio Stations</h3>
-                    </div>
-                    <p className="text-gray-300 text-sm">24/7 inspiration & worship</p>
-                  </div>
-                </motion.div>
-
-                <motion.div 
-                  className="relative overflow-hidden rounded-lg group cursor-pointer"
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  variants={fadeIn}
-                  transition={{ duration: 0.8, delay: 0.3 }}
-                  whileHover={{ y: -10 }}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-t from-black to-black/30 z-10"></div>
-                  <img src="https://eternityready.net/assets/images/channels/6.webp" alt="Podcasts" className="w-full h-60 object-cover group-hover:scale-110 transition duration-500" />
-                  <div className="absolute bottom-0 left-0 p-6 z-20">
-                    <div className="flex items-center gap-3 mb-2">
-                      <Headphones size={24} className="text-red-500" />
-                      <h3 className="text-xl font-bold text-white">Podcasts</h3>
-                    </div>
-                    <p className="text-gray-300 text-sm">Discussions & teachings</p>
-                  </div>
-                </motion.div>
-
-                <motion.div 
-                  className="relative overflow-hidden rounded-lg group cursor-pointer"
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  variants={fadeIn}
-                  transition={{ duration: 0.8, delay: 0.4 }}
-                  whileHover={{ y: -10 }}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-t from-black to-black/30 z-10"></div>
-                  <img src="https://eternityready.net/assets/images/channels/2.webp" alt="Movies & Music" className="w-full h-60 object-cover group-hover:scale-110 transition duration-500" />
-                  <div className="absolute bottom-0 left-0 p-6 z-20">
-                    <div className="flex items-center gap-3 mb-2">
-                      <Music size={24} className="text-red-500" />
-                      <h3 className="text-xl font-bold text-white">Movies & Music</h3>
-                    </div>
-                    <p className="text-gray-300 text-sm">Films & music videos</p>
-                  </div>
-                </motion.div>
-              </div>
-            </div>
-          </section>
+          <DiscoverContent />
 
           {/* Featured Content Slider */}
           <section className="py-16 bg-black">
@@ -526,96 +422,7 @@
               </div>
             </div>
           </section>
-          
-          {/* Popular Content Section */}
-          <section className="py-16 bg-black">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex items-center justify-between mb-8">
-                <h2 className="text-2xl md:text-3xl font-bold text-white">Popular Content</h2>
-                <a href="#" className="text-red-500 font-medium flex items-center gap-1 hover:underline">
-                  View All <ChevronRight size={16} />
-                </a>
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {[1, 2].map(item => (
-                  <motion.div
-                    key={`popular-${item}`}
-                    className="flex bg-gradient-to-r from-black to-gray-950 rounded-lg overflow-hidden shadow-lg h-48"
-                    whileHover={{ scale: 1.02 }}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    variants={fadeIn}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <div className="w-2/5">
-                      <img 
-                        src={`https://occ-0-2484-3662.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABUwmI40Z_JO28Rs9x7kntlYu8yOb7JWRpD6YFmPZlghd8sEOPwRlnoZVyCZVuOZdz7ki8MXhdjwx9vR513yLYX8zdOjkCwXy43-X3H7yxiFwdlr-8Oh-UvNfgxJxsT9blqqA.jpg?r=c75`} 
-                        alt={`Popular Content ${item}`} 
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="w-3/5 p-4 flex flex-col">
-                      <div className="flex items-center gap-2 mb-2">
-                        <span className="bg-yellow-500 text-black text-xs font-bold px-2 py-1 rounded">TOP RATED</span>
-                        <div className="flex items-center text-yellow-500 text-sm">
-                          <Star size={14} fill="currentColor" />
-                          <Star size={14} fill="currentColor" />
-                          <Star size={14} fill="currentColor" />
-                          <Star size={14} fill="currentColor" />
-                          <Star size={14} fill="currentColor" />
-                        </div>
-                      </div>
-                      <h3 className="font-bold text-xl mb-2 text-white">Popular Title {item}</h3>
-                      <p className="text-gray-300 text-sm mb-4 flex-grow line-clamp-2">
-                        Our most-watched content that has inspired thousands in their spiritual journey.
-                      </p>
-                      <button className="bg-red-600 text-white py-2 px-4 rounded-md font-medium text-sm hover:bg-red-700 transition flex items-center justify-center gap-2">
-                        <Play size={16} />
-                        Watch Now
-                      </button>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-              
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-6">
-                {[1, 2, 3, 4].map(item => (
-                  <motion.div
-                    key={`popular-small-${item}`}
-                    className="group cursor-pointer"
-                    whileHover={{ y: -5 }}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    variants={fadeIn}
-                    transition={{ duration: 0.5, delay: item * 0.1 }}
-                  >
-                    <div className="relative rounded-lg overflow-hidden mb-2">
-                      <img 
-                        src={`https://occ-0-2484-3662.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABamcESGNpOWZAADhfYxdfsT6sudg6yLftXVEhU7PX1dzW0613NjT0d815fB3zYzYR1a0zU8Wr9YqnJ2uSPb0h4urG-0gcfOr06VmRG6SXbjugAQHPlQ-u0j0HPODZy3eoTvY.jpg?r=012`} 
-                        alt={`Popular Content ${item}`} 
-                        className="w-full "
-                      />
-                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-2">
-                        <div className="flex items-center text-yellow-500 text-xs">
-                          <Star size={12} fill="currentColor" />
-                          <Star size={12} fill="currentColor" />
-                          <Star size={12} fill="currentColor" />
-                          <Star size={12} fill="currentColor" />
-                          <Star size={12} fill="currentColor" />
-                        </div>
-                      </div>
-                    </div>
-                    <h3 className="font-medium text-sm line-clamp-1 text-white">Popular Title {item + 2}</h3>
-                    <p className="text-gray-400 text-xs">Family • Faith</p>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </section>
-
+          <PopularContent title="Popular Content" />
           {/* Testimonials Section */}
           <section className="py-16 bg-black">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from "react"
 import { Star, Play, X, Info, Heart, ChevronLeft, ChevronRight } from "lucide-react"
 import { motion, AnimatePresence, useAnimation } from "framer-motion"
 import eternityLogo from "/assets/ETERNITY.webp";
-import { useNavigate } from "react-router-dom";
 import React from "react";
 interface MovieItem {
   id: string
@@ -18,7 +17,7 @@ interface MovieItem {
   loaded: boolean
 }
 
-export default function EnhancedSection({ data, title, sectionNavigation }: { data: MovieItem[]; title: string, sectionNavigation: string }) {
+export default function EnhancedSection({ data, title }: { data: MovieItem[]; title: string, sectionNavigation: string }) {
   const [active, setActive] = useState(0)
   const [imagesPerSlide, setImagesPerSlide] = useState(4)
   const [peekPercentage, setPeekPercentage] = useState(0) // Percentage of next image to show
@@ -31,7 +30,7 @@ export default function EnhancedSection({ data, title, sectionNavigation }: { da
   const [dragging, setDragging] = useState(false)
   const [favorites, setFavorites] = useState<Set<string>>(new Set())
   const [isMouseHoverSection, setIsMouseHoverSection] = useState(false);
-  const navigate = useNavigate();
+
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth
@@ -164,17 +163,16 @@ export default function EnhancedSection({ data, title, sectionNavigation }: { da
         animate={{ opacity: 1, y: 0 }}
         className="lg:mb-8 mb-4"
       >
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center justify-between mb-10">
           <div className="flex items-center lg:gap-6 sm: gap-2">
             <h2 className="text-xl lg:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-100 via-gray-300 to-gray-500 drop-shadow-lg">
               {title}
             </h2>
           </div>
          <div className="flex items-center gap-3">
-            <button className="text-teal-500 lg:mt-1 lg:text-lg cursor-pointer sm: text-sm flex items-center font-medium transition-all duration-300 hover:group hover:translate-x-2" onClick={() => navigate(sectionNavigation)}>
-              View More
-              <ChevronRight className="lg:w-6 lg:h-6 sm: w-5 sm: h-5 text-teal-500 lg:mt-[3px] sm: mt-0 transition-transform duration-300 ease-out " />
-            </button>
+            <a href="#" className="text-teal-500 font-medium flex items-center gap-1">
+              View More <ChevronRight size={16} />
+            </a>
             <div className="hidden md:flex items-center gap-2 bg-black/30 backdrop-blur-md rounded-full p-1 border border-white/10 shadow-lg">
               {Array.from({ length: Math.min(5, totalSlides) }).map((_, idx) => (
                 <motion.button
@@ -210,8 +208,7 @@ export default function EnhancedSection({ data, title, sectionNavigation }: { da
         aria-roledescription="carousel"
         style={getContainerStyles()}
       >
-        {/* Navigation Buttons */}
-        {isMouseHoverSection && 
+      {isMouseHoverSection && 
         <>
         <div className="bg-gradient-to-b from-black via-black/20 to-black/90"/>
         <div className="absolute inset-y-0 -left-3 z-30 lg:flex items-center hidden">

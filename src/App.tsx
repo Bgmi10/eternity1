@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import BottomNavBar from "./components/BottomNavBar";
 import NotFound from "./components/NotFound";
 import Home from "./components/home/Home";
+import EternityReady from "./components/EternityReady";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/movies" element={<Home />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <EternityReady />
       <Footer />
     </Router>
   );

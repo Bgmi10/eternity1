@@ -249,105 +249,123 @@ export const multiGridData = [
             id: 1,
             name: "How to save money",
             descriptions: "Tips for building your savings efficiently.",
-            image: "/assets/tvseries/1.webp" // Image URL
+            image: "https://eternityready.net/assets/images/entertainment/1.webp" // Image URL
         },
         {
             id: 2,
             name: "How to invest money",
             descriptions: "Beginner-friendly investment strategies.",
-            image: "/assets/tvseries/2.webp"
+            image: "https://eternityready.net/assets/images/entertainment/2.webp"
         },
         {
             id: 3,
             name: "How to budget money",
             descriptions: "Create a budget that works for you.",
-            image: "/assets/tvseries/3.webp"
+            image: "https://eternityready.net/assets/images/entertainment/3.webp"
         },
         {
             id: 4,
             name: "How to earn money",
             descriptions: "Side hustles and passive income ideas.",
-            image: "/assets/tvseries/4.webp"
+            image: "https://eternityready.net/assets/images/entertainment/4.webp"
         },
         {
             id: 1,
             name: "How to save money",
             descriptions: "Tips for building your savings efficiently.",
-            image: "/assets/tvseries/1.webp" // Image URL
+            image: "https://eternityready.net/assets/images/entertainment/5.webp" // Image URL
+        },
+        {
+            id: 1,
+            name: "How to save money",
+            descriptions: "Tips for building your savings efficiently.",
+            image: "https://eternityready.net/assets/images/entertainment/1.webp" // Image URL
         },
         {
             id: 2,
             name: "How to invest money",
             descriptions: "Beginner-friendly investment strategies.",
-            image: "/assets/tvseries/2.webp"
+            image: "https://eternityready.net/assets/images/entertainment/2.webp"
         },
         {
             id: 3,
             name: "How to budget money",
             descriptions: "Create a budget that works for you.",
-            image: "/assets/tvseries/3.webp"
+            image: "https://eternityready.net/assets/images/entertainment/3.webp"
         },
         {
             id: 4,
             name: "How to earn money",
             descriptions: "Side hustles and passive income ideas.",
-            image: "/assets/tvseries/4.webp"
-        }
+            image: "https://eternityready.net/assets/images/entertainment/4.webp"
+        },
+        {
+            id: 1,
+            name: "How to save money",
+            descriptions: "Tips for building your savings efficiently.",
+            image: "https://eternityready.net/assets/images/entertainment/5.webp" // Image URL
+        },
     ],
     [
         {
-            id: 6,
-            name: "How to get a loan",
-            descriptions: "Understanding loans and interest rates.",
-            image: "/assets/tvseries/5.webp"
-        },
-        {
-            id: 7,
-            name: "How to pay off debt",
-            descriptions: "Strategies to eliminate debt faster.",
-            image: "/assets/tvseries/6.webp"
-        },
-        {
-            id: 8,
-            name: "How to start a business",
-            descriptions: "Step-by-step guide to entrepreneurship.",
-            image: "/assets/tvseries/7.webp"
-        },
-        {
-            id: 9,
-            name: "How to retire early",
-            descriptions: "Financial independence and early retirement.",
-            image: "/assets/tvseries/1.webp"
-        },
-        {
-            id: 10,
-            name: "How to build wealth",
-            descriptions: "Long-term wealth-building principles.",
-            image: "/assets/tvseries/1.webp"
-        },
-        {
             id: 1,
             name: "How to save money",
             descriptions: "Tips for building your savings efficiently.",
-            image: "/assets/tvseries/1.webp" // Image URL
+            image: "https://eternityready.net/assets/images/entertainment/1.webp" // Image URL
         },
         {
             id: 2,
             name: "How to invest money",
             descriptions: "Beginner-friendly investment strategies.",
-            image: "/assets/tvseries/2.webp"
+            image: "https://eternityready.net/assets/images/entertainment/2.webp"
         },
         {
             id: 3,
             name: "How to budget money",
             descriptions: "Create a budget that works for you.",
-            image: "/assets/tvseries/3.webp"
+            image: "https://eternityready.net/assets/images/entertainment/3.webp"
         },
         {
             id: 4,
             name: "How to earn money",
             descriptions: "Side hustles and passive income ideas.",
-            image: "/assets/tvseries/4.webp"
-        }
+            image: "https://eternityready.net/assets/images/entertainment/4.webp"
+        },
+        {
+            id: 1,
+            name: "How to save money",
+            descriptions: "Tips for building your savings efficiently.",
+            image: "https://eternityready.net/assets/images/entertainment/5.webp" // Image URL
+        },
+        {
+            id: 1,
+            name: "How to save money",
+            descriptions: "Tips for building your savings efficiently.",
+            image: "https://eternityready.net/assets/images/entertainment/1.webp" // Image URL
+        },
+        {
+            id: 2,
+            name: "How to invest money",
+            descriptions: "Beginner-friendly investment strategies.",
+            image: "https://eternityready.net/assets/images/entertainment/2.webp"
+        },
+        {
+            id: 3,
+            name: "How to budget money",
+            descriptions: "Create a budget that works for you.",
+            image: "https://eternityready.net/assets/images/entertainment/3.webp"
+        },
+        {
+            id: 4,
+            name: "How to earn money",
+            descriptions: "Side hustles and passive income ideas.",
+            image: "https://eternityready.net/assets/images/entertainment/4.webp"
+        },
+        {
+            id: 1,
+            name: "How to save money",
+            descriptions: "Tips for building your savings efficiently.",
+            image: "https://eternityready.net/assets/images/entertainment/5.webp" // Image URL
+        },
     ]
 ];

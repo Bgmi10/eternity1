@@ -30,7 +30,7 @@ export default function GlobalReachStats() {
             style={{ background: 'transparent', border: 'none' }}
           />
          </motion.div>
-            <h3 className="text-5xl font-bold text-white mb-4 text-center">175+</h3>
+            <h3 className="text-5xl font-bold text-white mb-4 text-center">50+</h3>
             <p className="text-gray-300 font-semibold text-center">Countries</p>
             <p className="text-sm text-gray-400 mt-2 text-center">Global availability across continents</p>
           </div>
@@ -47,7 +47,7 @@ export default function GlobalReachStats() {
             style={{ background: 'transparent', border: 'none' }}
           />
          </motion.div>
-            <h3 className="text-5xl font-bold text-white mb-4 text-center">83M+</h3>
+            <h3 className="text-5xl font-bold text-white mb-4 text-center">1M+</h3>
             <p className="text-gray-300 font-semibold text-center">Households</p>
             <p className="text-sm text-gray-400 mt-2 text-center">Trusted by families worldwide</p>
           </div>

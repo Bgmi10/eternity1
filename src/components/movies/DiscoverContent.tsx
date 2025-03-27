@@ -18,8 +18,8 @@ export default function DiscoverContent() {
                 variants={fadeIn}
                 transition={{ duration: 0.8 }}
               >
-                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Discover Content</h2>
-                <div className="h-1 w-24 bg-red-500 mx-auto mb-8"></div>
+                <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">Discover Content</h2>
+                <div className="h-1 w-24 bg-red-600 mx-auto mb-8"></div>
                 <p className="text-xl text-gray-300 max-w-3xl mx-auto">
                   Explore our diverse range of faith-building content across multiple formats
                 </p>

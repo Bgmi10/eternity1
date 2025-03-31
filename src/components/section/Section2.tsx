@@ -97,13 +97,13 @@ export default function Section2({ data }: { data: Data[] }) {
   }, [controls])
 
   return (
-    <div className="flex flex-col m-8 gap-8">
+    <div className="flex flex-col m-5 gap-6">
       {/* Header with badge */}
       <div className="flex items-center justify-between">
         <div className="flex flex-col">
-          <h2 className="font-bold  text-xl lg:text-4xl bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent flex items-center gap-2">
+          <h2 className="font-bold  text-xl lg:text-2xl bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent flex items-center gap-2">
             Most Watched
-            <div className="inline-flex items-center justify-center">
+            <div className="inline-flex items-center justify-center mt-1">
               <div className="relative">
                 <Star className="h-5 w-5 text-amber-400 absolute animate-ping opacity-75" />
                 <Star className="h-5 w-5 text-amber-400 relative" />
@@ -160,7 +160,7 @@ export default function Section2({ data }: { data: Data[] }) {
         {/* Main scroll container */}
         <div
           ref={scrollContainerRef}
-          className="flex gap-4 overflow-x-auto scrollbar-hide scroll-smooth pb-4 pt-2 px-1"
+          className="flex gap-4 overflow-x-auto scrollbar-hide scroll-smooth pb-4 pt-2 px-3"
           style={{
             scrollbarWidth: "none",
             msOverflowStyle: "none",
@@ -190,7 +190,7 @@ export default function Section2({ data }: { data: Data[] }) {
                 <img
                   src={item.posterPath}
                   alt={item.title || `Item ${item.id}`}
-                  className="lg:w-full sm: w-[130px] h-full object-cover shadow-md"
+                  className="lg:w-full sm: w-[130px] h-52 object-cover shadow-md"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/0 to-black/90 transition-all duration-300" />
@@ -207,8 +207,8 @@ export default function Section2({ data }: { data: Data[] }) {
                   />
 
                   {/* Main number container */}
-                  <div className="relative flex items-center justify-center lg:w-12 lg:h-12 h-6 w-6 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full shadow-lg border-2 border-white/20">
-                    <span className="font-extrabold text-xl lg:text-4xl text-white">{item.id}</span>
+                  <div className="relative flex items-center justify-center lg:w-8 lg:h-8 h-6 w-6 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full shadow-lg border-2 border-white/20">
+                    <span className="font-extrabold text-xl lg:text-2xl text-white">{item.id}</span>
                   </div>
                 </div>
               </div>

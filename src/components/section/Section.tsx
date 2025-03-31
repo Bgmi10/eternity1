@@ -163,9 +163,9 @@ export default function EnhancedSection({ data, title }: { data: MovieItem[]; ti
         animate={{ opacity: 1, y: 0 }}
         className="lg:mb-8 mb-4"
       >
-        <div className="flex items-center justify-between mb-10">
+        <div className="flex items-center justify-between">
           <div className="flex items-center lg:gap-6 sm: gap-2">
-            <h2 className="text-xl lg:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-100 via-gray-300 to-gray-500 drop-shadow-lg">
+            <h2 className="text-xl lg:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-100 via-gray-300 to-gray-500 drop-shadow-lg">
               {title}
             </h2>
           </div>
@@ -305,7 +305,7 @@ export default function EnhancedSection({ data, title }: { data: MovieItem[]; ti
                       <img
                         src={item.posterPath}
                         alt={item.title}
-                        className="absolute inset-0 h-full transition-all duration-500 group-hover:scale-105 sm: w-full lg:w-full"
+                        className="absolute inset-0 h-40 transition-all duration-500 group-hover:scale-105 sm: w-full"
                         onLoad={() => setTimeout(() => handleImageLoad(item.id), 800)}
                         loading="lazy"
                         style={{

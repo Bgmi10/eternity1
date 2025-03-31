@@ -369,3 +369,46 @@ export const multiGridData = [
         },
     ]
 ];
+
+export const featuredData = [
+    {
+        id: 1,
+        title: `Faith And Marriage Are Tested - "Just A Measure Of Faith" - Full Free Maverick Movies`,
+        posterUrl: "https://www.eternityready.com/movies/uploads/thumbs/a613fe093-1.jpg",
+    },
+    { 
+        id: 2,
+        title: "Welcome to jordan!",
+        posterUrl: "https://www.eternityready.com/movies/uploads/thumbs/12011570b-1.jpg"
+    },
+    {
+        id: 3,
+        title: "Amir Tsarfati: The Dead See",
+        posterUrl: "https://www.eternityready.com/movies/uploads/thumbs/b310201c0-1.jpg"
+    },
+    {
+        id: 4,
+        title: "American Gospel: Christ Alone",
+        posterUrl: "https://www.eternityready.com/movies/uploads/thumbs/2b2f0f394-1.jpg"
+    },
+    {
+        id: 5,
+        title: "The Story of jesus for children",
+        posterUrl: "https://www.eternityready.com/movies/uploads/thumbs/eda6c0366-1.jpg"
+    },
+    {
+        id: 6,
+        title: "Amir Tsarfati: Living on the Edge of Armageddon",
+        posterUrl: "https://www.eternityready.com/movies/uploads/thumbs/2544659f3-1.jpg",
+    },
+    {
+        id: 7,
+        title: "JESUS Film - Italian - GESÙ Film",
+        posterUrl: "https://www.eternityready.com/movies/uploads/thumbs/5f7794047-1.jpg"
+    },
+    {
+        id: 8,
+        title: "JESUS Film * Hebrew * סרט ישוע",
+        posterUrl: "https://www.eternityready.com/movies/uploads/thumbs/59350795d-1.jpg"
+    }
+]

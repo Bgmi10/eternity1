@@ -19,6 +19,20 @@ const MultiItemSlider = ({ title }: { title: string }) => {
     const newIndex = swiper.realIndex;
     setActiveIndex(newIndex);
   };
+  
+  // Create smaller chunks for mobile view (4 items per slide)
+  const createMobileSlides = () => {
+    const allItems = multiGridData.flat();
+    const mobileSlides = [];
+    
+    for (let i = 0; i < allItems.length; i += 4) {
+      mobileSlides.push(allItems.slice(i, i + 4));
+    }
+    
+    return mobileSlides;
+  };
+  
+  const mobileSlides = createMobileSlides();
 
   return (
     <motion.div 
@@ -37,27 +51,25 @@ const MultiItemSlider = ({ title }: { title: string }) => {
           {title}
         </motion.h2>
 
+        {/* Mobile Slider (4 items per slide) */}
         <motion.div 
-          className="relative"
+          className="relative block md:hidden"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
         >
           <Swiper
             modules={[Navigation, Autoplay, EffectFade]}
-            spaceBetween={20}
-            autoplay={true}
-            slidesPerView={1}
             onSwiper={(swiper) => (swiperRef.current = swiper)}
             onSlideChange={handleSlideChange}
             className="w-full rounded-2xl overflow-hidden shadow-2xl"
           >
-            {multiGridData.map((slide, index) => (
-              <SwiperSlide key={index}>
-                <div className="grid grid-cols-2 md:grid-cols-5 gap-6 p-1">
-                  {slide.map((item) => (
+            {mobileSlides.map((slide, index) => (
+              <SwiperSlide key={`mobile-${index}`}>
+                <div className="grid grid-cols-2 gap-6 p-1">
+                  {slide.map((item, itemIndex) => (
                     <motion.div 
-                      key={item.id} 
+                      key={`mobile-item-${index}-${itemIndex}`} 
                       className="bg-gradient-to-b via-gray-400/20 cursor-pointer rounded-md overflow-hidden hover:shadow-2xl group"
                     >
                       <div className="relative overflow-hidden">
@@ -94,18 +106,77 @@ const MultiItemSlider = ({ title }: { title: string }) => {
             ))}
           </Swiper>
         </motion.div>
+
+        {/* Desktop Slider (original) */}
+        <motion.div 
+          className="relative hidden md:block"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          <Swiper
+            modules={[Navigation, Autoplay, EffectFade]}
+            onSwiper={(swiper) => (swiperRef.current = swiper)}
+            onSlideChange={handleSlideChange}
+            className="w-full rounded-2xl overflow-hidden shadow-2xl"
+          >
+            {multiGridData.map((slide, index) => (
+              <SwiperSlide key={`desktop-${index}`}>
+                <div className="grid grid-cols-5 gap-6 p-1">
+                  {slide.map((item, itemIndex) => (
+                    <motion.div 
+                      key={`desktop-item-${index}-${itemIndex}`} 
+                      className="bg-gradient-to-b via-gray-400/20 cursor-pointer rounded-md overflow-hidden hover:shadow-2xl group"
+                    >
+                      <div className="relative overflow-hidden">
+                        <img 
+                          src={item.image} 
+                          alt={item.name}
+                          className="w-52 h-32"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                      </div>
+                
+                      <div className="p-1 bg-gray-400/0">
+                        <motion.h3 
+                          className="text-md font-bold text-white truncate"
+                          initial={{ y: 20, opacity: 0 }}
+                          animate={{ y: 0, opacity: 1 }}
+                          transition={{ delay: 0.2 }}
+                        >
+                          {item.name}
+                        </motion.h3>
+                        <motion.p 
+                          className="text-xs text-gray-400 line-clamp-2"
+                          initial={{ y: 20, opacity: 0 }}
+                          animate={{ y: 0, opacity: 1 }}
+                          transition={{ delay: 0.3 }}
+                        >
+                          {item.descriptions}
+                        </motion.p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </motion.div>
+
+        {/* Pagination Indicators */}
         <div className="flex justify-center gap-2 lg:mt-6">
-        {multiGridData.map((_: any, index: number) => (
-          <button
-            key={index}
-            onClick={() => swiperRef.current.swiper.slideTo(index)}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${
-              activeIndex  === index ? 'bg-white w-6' : 'bg-white/50'
-            }`}
-          />
-        ))}
-      </div>
+          {(window.innerWidth >= 768 ? multiGridData : mobileSlides).map((_: any, index: number) => (
+            <button
+              key={index}
+              onClick={() => swiperRef.current?.slideTo(index)}
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                activeIndex === index ? 'bg-white w-6' : 'bg-white/50'
+              }`}
+            />
+          ))}
+        </div>
       
+        {/* Navigation */}
         <div className='flex justify-center items-center mt-10 space-x-6'>
           <motion.button 
             onClick={() => swiperRef.current?.slidePrev()}

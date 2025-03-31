@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ChevronRight, ChevronLeft, Play, Info, Heart, Star, MonitorSmartphone } from "lucide-react";
-import DiscoverContent from "../movies/DiscoverContent";
-import PopularContent from "../movies/PopularContent";
+import DiscoverContent from "../home/DiscoverContent";
+import PopularContent from "../home/PopularContent";
 
 export default function HomePage() {
   

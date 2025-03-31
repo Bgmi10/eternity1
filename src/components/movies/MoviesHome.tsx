@@ -1,5 +1,5 @@
 import HeroSlider from "../home/Slider";
-import { featuredData, sliderData, trendingMovies, mostWatched } from "../../utils/constants";
+import { featuredData, sliderData } from "../../utils/constants";
 import Featured from "./Featured";
 
 export default function MoviesHome() {

@@ -103,7 +103,7 @@ export default function Section2({ data }: { data: Data[] }) {
         <div className="flex flex-col">
           <h2 className="font-bold  text-xl lg:text-2xl bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent flex items-center gap-2">
             Most Watched
-            <div className="inline-flex items-center justify-center mt-1">
+            <div className="inline-flex items-center justify-center lg:mt-1">
               <div className="relative">
                 <Star className="h-5 w-5 text-amber-400 absolute animate-ping opacity-75" />
                 <Star className="h-5 w-5 text-amber-400 relative" />
@@ -114,7 +114,7 @@ export default function Section2({ data }: { data: Data[] }) {
 
         {/* New badge */}
         <motion.div
-          className="bg-gradient-to-r from-amber-500 to-red-500 text-white px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1 shadow-lg"
+          className="bg-gradient-to-r from-amber-500 to-red-500 text-white lg:px-3 lg:py-1 px-1 py-1 rounded-full text-sm font-medium flex items-center gap-1 shadow-lg"
         >
           <Fire className="h-4 w-4" />
           <span>New Arrivals</span>
@@ -129,7 +129,7 @@ export default function Section2({ data }: { data: Data[] }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute left-0 top-20 lg:top-40 -translate-y-1/2 z-20 bg-black/80 hover:bg-black text-white rounded-full p-2 shadow-lg -ml-4 backdrop-blur-sm"
+            className="absolute left-0 top-30 lg:top-40 -translate-y-1/2 z-20 bg-black/80 hover:bg-black text-white rounded-full p-2 shadow-lg -ml-4 backdrop-blur-sm"
             onClick={scrollLeft20}
           >
             <ChevronLeft className="h-6 w-6" />
@@ -142,7 +142,7 @@ export default function Section2({ data }: { data: Data[] }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute right-0 top-20 lg:top-40 -translate-y-1/2 z-20 bg-black/80 hover:bg-black text-white rounded-full p-2 shadow-lg -mr-4 backdrop-blur-sm"
+            className="absolute right-0 top-30 lg:top-40 -translate-y-1/2 z-20 bg-black/80 hover:bg-black text-white rounded-full p-2 shadow-lg -mr-4 backdrop-blur-sm"
             onClick={scrollRight20}
           >
             <ChevronRight className="h-6 w-6" />
@@ -190,7 +190,7 @@ export default function Section2({ data }: { data: Data[] }) {
                 <img
                   src={item.posterPath}
                   alt={item.title || `Item ${item.id}`}
-                  className="lg:w-full sm: w-[130px] h-52 object-cover shadow-md"
+                  className="lg:w-full sm: w-[170px] h-52 object-cover shadow-md"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/0 to-black/90 transition-all duration-300" />

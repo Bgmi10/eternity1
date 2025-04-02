@@ -48,7 +48,7 @@ export default function Featured({ data }: { data: any }) {
   };
 
   return (
-    <div className="bg-black py-8 px-4 rounded-lg shadow-lg my-10 max-w-8xl">
+    <div className="bg-black py-4 px-4 rounded-lg shadow-lg my-6 max-w-8xl">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-white text-2xl font-bold relative inline-block pb-2">
           Featured
@@ -160,7 +160,7 @@ export default function Featured({ data }: { data: any }) {
                       </motion.div>
                     </div>
                   </div>
-                  <div className="p-4 text-white">
+                  <div className="p-4 text-white ">
                     <h3 className="font-bold text-md line-clamp-2">{item.title}</h3>
                   </div>
                 </div>
@@ -171,15 +171,6 @@ export default function Featured({ data }: { data: any }) {
         
         {/* Show a gradient fade at the edge to hint at more content */}
         <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-12 bg-gradient-to-l from-black to-transparent pointer-events-none"></div>
-      </div>
-      
-      <div className="flex justify-center mt-6 space-x-3 md:hidden">
-        {Array.from({ length: Math.min(3, totalSlides) }).map((_, idx) => (
-          <span 
-            key={idx}
-            className={`w-3 h-3 rounded-full ${idx === active ? 'bg-red-600' : 'bg-gray-600'}`}
-          ></span>
-        ))}
       </div>
     </div>
   );

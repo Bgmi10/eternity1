@@ -239,7 +239,7 @@ export default function EnhancedSection({ data, title }: { data: MovieItem[]; ti
             whileTap={{ scale: 0.95 }}
             onClick={handleNextSlide}
             className={`flex items-center justify-center cursor-pointer w-12 h-[150px] rounded-xl bg-gradient-to-br from-black-600/20 to-black/60 backdrop-blur-lg
-                backdrop-opacity-90 
+              backdrop-opacity-90 
               focus:outline-none focus:ring-2 focus:ring-offset-black
               transition-all duration-300 transform lg:mr-4 mr-2
          `}
@@ -262,7 +262,7 @@ export default function EnhancedSection({ data, title }: { data: MovieItem[]; ti
           {data.map((item: MovieItem, index: number) => (
             <motion.div
               key={item.id || index}
-              className="relative flex-shrink-0 px-2"
+              className="relative px-2"
               style={{ 
                 width: getItemWidth(index),
                 transition: 'all 0.4s ease-out'
@@ -305,7 +305,7 @@ export default function EnhancedSection({ data, title }: { data: MovieItem[]; ti
                       <img
                         src={item.posterPath}
                         alt={item.title}
-                        className="absolute inset-0 h-40 transition-all duration-500 group-hover:scale-105 sm: w-full"
+                        className="absolute inset-0 lg:h-40 transition-all duration-500 group-hover:scale-105 sm: w-60 sm: h-24"
                         onLoad={() => setTimeout(() => handleImageLoad(item.id), 800)}
                         loading="lazy"
                         style={{
@@ -342,7 +342,7 @@ export default function EnhancedSection({ data, title }: { data: MovieItem[]; ti
                       </motion.button>
                       
                       {/* Enhanced Rating badge */}
-                      <div className="absolute bottom-3 sm: hidden  left-3 lg:flex items-center bg-black/70 backdrop-blur-sm px-2.5 py-1 rounded-full border border-white/5 shadow-lg">
+                      <div className="absolute bottom-7 sm: hidden  left-1 lg:flex items-center bg-black/70 backdrop-blur-sm px-2.5 py-1 rounded-full border border-white/5 shadow-lg">
                         <Star className="w-3 h-3 mr-1 text-yellow-400" fill="currentColor"/> 
                         <span className="text-xs font-semibold text-white">{item.rating.toFixed(1)}</span>
                       </div>
@@ -362,7 +362,7 @@ export default function EnhancedSection({ data, title }: { data: MovieItem[]; ti
                         <motion.h3 
                           initial={{ opacity: 0, y: -10 }}
                           animate={{ opacity: 1, y: 0 }}
-                          className="text-lg lg:text-xl font-bold text-white mb-2 leading-tight"
+                          className="text-lg lg:text-xl font-bold text-white mb-2 leading-tight line-clamp-1"
                         >
                           {item.title}
                         </motion.h3>

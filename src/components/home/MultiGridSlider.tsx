@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay, EffectFade } from 'swiper/modules';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
@@ -12,12 +12,33 @@ import 'swiper/css/effect-fade';
 import { multiGridData } from '../../utils/constants';
 
 const MultiItemSlider = ({ title }: { title: string }) => {
-  const swiperRef = useRef<any>(null);
+  const mobileSwiperRef = useRef<any>(null);
+  const desktopSwiperRef = useRef<any>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
-  const handleSlideChange = (swiper: any) => {
-    const newIndex = swiper.realIndex;
-    setActiveIndex(newIndex);
+  // Check if we're on mobile
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    // Set initial value
+    handleResize();
+    
+    // Add event listener
+    window.addEventListener('resize', handleResize);
+    
+    // Clean up
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const handleMobileSlideChange = (swiper: any) => {
+    setActiveIndex(swiper.realIndex);
+  };
+
+  const handleDesktopSlideChange = (swiper: any) => {
+    setActiveIndex(swiper.realIndex);
   };
   
   // Create smaller chunks for mobile view (4 items per slide)
@@ -34,6 +55,32 @@ const MultiItemSlider = ({ title }: { title: string }) => {
   
   const mobileSlides = createMobileSlides();
 
+  // Handle navigation button clicks
+  const handlePrevClick = () => {
+    if (isMobile) {
+      mobileSwiperRef.current?.slidePrev();
+    } else {
+      desktopSwiperRef.current?.slidePrev();
+    }
+  };
+
+  const handleNextClick = () => {
+    if (isMobile) {
+      mobileSwiperRef.current?.slideNext();
+    } else {
+      desktopSwiperRef.current?.slideNext();
+    }
+  };
+
+  // Handle pagination click
+  const handlePaginationClick = (index: number) => {
+    if (isMobile) {
+      mobileSwiperRef.current?.slideTo(index);
+    } else {
+      desktopSwiperRef.current?.slideTo(index);
+    }
+  };
+
   return (
     <motion.div 
       className="bg-gradient-to-br from-gray-400/20 via-black py-16"
@@ -43,7 +90,7 @@ const MultiItemSlider = ({ title }: { title: string }) => {
     >
       <div className="container mx-auto px-6 max-w-6xl">
         <motion.h2 
-          className="text-3xl md:text-5xl font-bold text-white mb-16 text-center"
+          className="text-3xl md:text-5xl font-bold text-white mb-10 text-center"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -60,8 +107,8 @@ const MultiItemSlider = ({ title }: { title: string }) => {
         >
           <Swiper
             modules={[Navigation, Autoplay, EffectFade]}
-            onSwiper={(swiper) => (swiperRef.current = swiper)}
-            onSlideChange={handleSlideChange}
+            onSwiper={(swiper) => (mobileSwiperRef.current = swiper)}
+            onSlideChange={handleMobileSlideChange}
             className="w-full rounded-2xl overflow-hidden shadow-2xl"
           >
             {mobileSlides.map((slide, index) => (
@@ -76,7 +123,7 @@ const MultiItemSlider = ({ title }: { title: string }) => {
                         <img 
                           src={item.image} 
                           alt={item.name}
-                          className="w-52 h-32"
+                          className="w-full h-32 object-cover"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
                       </div>
@@ -116,8 +163,8 @@ const MultiItemSlider = ({ title }: { title: string }) => {
         >
           <Swiper
             modules={[Navigation, Autoplay, EffectFade]}
-            onSwiper={(swiper) => (swiperRef.current = swiper)}
-            onSlideChange={handleSlideChange}
+            onSwiper={(swiper) => (desktopSwiperRef.current = swiper)}
+            onSlideChange={handleDesktopSlideChange}
             className="w-full rounded-2xl overflow-hidden shadow-2xl"
           >
             {multiGridData.map((slide, index) => (
@@ -132,7 +179,7 @@ const MultiItemSlider = ({ title }: { title: string }) => {
                         <img 
                           src={item.image} 
                           alt={item.name}
-                          className="w-52 h-32"
+                          className="w-full h-32 object-cover"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
                       </div>
@@ -164,39 +211,42 @@ const MultiItemSlider = ({ title }: { title: string }) => {
         </motion.div>
 
         {/* Pagination Indicators */}
-        <div className="flex justify-center gap-2 lg:mt-6">
-          {(window.innerWidth >= 768 ? multiGridData : mobileSlides).map((_: any, index: number) => (
+        <div className="flex justify-center gap-2 mt-4 lg:mt-6">
+          {(isMobile ? mobileSlides : multiGridData).map((_: any, index: number) => (
             <button
               key={index}
-              onClick={() => swiperRef.current?.slideTo(index)}
+              onClick={() => handlePaginationClick(index)}
               className={`w-2 h-2 rounded-full transition-all duration-300 ${
                 activeIndex === index ? 'bg-white w-6' : 'bg-white/50'
               }`}
+              aria-label={`Go to slide ${index + 1}`}
             />
           ))}
         </div>
       
-        {/* Navigation */}
+        {/* Navigation - Visible on all screen sizes */}
         <div className='flex justify-center items-center mt-10 space-x-6'>
           <motion.button 
-            onClick={() => swiperRef.current?.slidePrev()}
-            className="bg-white/10 hover:bg-white/20 text-white rounded-full p-3 transition-all duration-300"
+            onClick={handlePrevClick}
+            className="bg-white/10 hover:bg-white/20 text-white rounded-full p-2 md:p-3 transition-all duration-300"
+            aria-label="Previous slide"
           >
-            <FaChevronLeft className="text-2xl" />
+            <FaChevronLeft className="text-xl md:text-2xl" />
           </motion.button>
           
           <motion.a 
             href="#" 
-            className="px-8 py-3 border border-gray-400/40 text-white rounded-lg font-semibold transition-colors"
+            className="px-4 py-2 md:px-8 md:py-3 border border-gray-400/40 text-white rounded-lg font-semibold transition-colors text-sm md:text-base"
           >
             View All
           </motion.a>
           
           <motion.button 
-            onClick={() => swiperRef.current?.slideNext()}
-            className="bg-white/10 hover:bg-white/20 text-white rounded-full p-3 transition-all duration-300"
+            onClick={handleNextClick}
+            className="bg-white/10 hover:bg-white/20 text-white rounded-full p-2 md:p-3 transition-all duration-300"
+            aria-label="Next slide"
           >
-            <FaChevronRight className="text-2xl" />
+            <FaChevronRight className="text-xl md:text-2xl" />
           </motion.button>
         </div>
       </div>

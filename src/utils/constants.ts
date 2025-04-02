@@ -123,7 +123,7 @@ export const sliderData =  [
             "updatedAt": "2025-01-18T12:42:14.771Z"
         },
         
-]
+];
 
 export const trendingMovies = [
     {
@@ -186,7 +186,7 @@ export const trendingMovies = [
         youtubeId: "bezLq9ykMlQ",
         rating: 2.2
     },  
-]
+];
 
 export const reviews_1 = [
     imgradio1,
@@ -198,13 +198,13 @@ export const reviews_2 = [
     imgradio4,
     imgradio5,
     imgradio6,
-]
+];
 
 export const reviews_3 = [
     imgradio7,
     imgradio8,
     imgradio9,
-]
+];
 
 export const mostWatched = [
     {
@@ -241,7 +241,7 @@ export const mostWatched = [
         id: 7,
         posterPath: "/assets/most-watch/7.webp"  
     }
-]
+];
 
 export const multiGridData = [
     [
@@ -410,5 +410,82 @@ export const featuredData = [
         id: 8,
         title: "JESUS Film * Hebrew * סרט ישוע",
         posterUrl: "https://www.eternityready.com/movies/uploads/thumbs/59350795d-1.jpg"
+    }
+];
+
+export const moviesNew = [
+    {
+        id: 1,
+        title: "More Than A Champion",
+        posterUrl: "https://www.eternityready.com/movies/uploads/thumbs/0a685485d-1.jpg",
+        duration: "52.05",
+        postedBy: "eternityready"
+    },
+    {
+        id: 2,
+        title: "Resurrection Trial (2009)",
+        posterUrl: "https://www.eternityready.com/movies/uploads/thumbs/3c490f4a9-1.jpg",
+        duration: "54:03",
+        postedBy: "eternityready"
+    },
+    {
+      id: 3,
+      title: "Paul The Emissary (2003)",
+      posterUrl: "https://www.eternityready.com/movies/uploads/thumbs/555e0aa92-1.jpg",
+      popular: true,
+      duration: "52:32",
+      postedBy: "eternityready"
+    },
+    {
+        id: 4,
+        title: "On The Edge (1989)",
+        posterUrl: "https://www.eternityready.com/movies/uploads/thumbs/4f95308f5-1.jpg",
+        duration: "59.03",
+        postedBy: "eternityready",
+
+    },
+    {
+        id: 5,
+        title: "Redeemed By Grace(2015)",
+        posterUrl: "https://www.eternityready.com/movies/uploads/thumbs/42bb4af2b-1.jpg",
+        duration: "1:14:33",
+        postedBy: "eternityready",
+        popular: true
+    },
+    {
+        id: 6,
+        title: "Free Indeed: The Phil Thatcher Story (2014)",
+        posterUrl: "https://www.eternityready.com/movies/uploads/thumbs/e85d49899-1.jpg",
+        duration: "55:55",
+        popular: true,
+        postedBy: "eternityready",
+    },
+    {
+        id: 7,
+        title: "Between The Walls (2006)",
+        posterUrl: "https://www.eternityready.com/movies/uploads/thumbs/e38cd16fe-1.jpg",
+        duration: "1:12:07",
+        postedBy: "eternityready",
+    },
+    {
+        id: 8,
+        title: "Debunking Evolution",
+        posterUrl: "https://www.eternityready.com/movies/uploads/thumbs/6cff7d120-1.jpg",
+        duration: "1:44:08",
+        postedBy: "eternityready",
+    },
+    {
+        id: 9,
+        title: "Is Genesis History?",
+        posterUrl: "https://www.eternityready.com/movies/uploads/thumbs/8f99969b7-1.jpg",
+        duration: "1:44:01",
+        postedBy: "eternityready",
+    },
+    {
+        posterUrl: "https://www.eternityready.com/movies/uploads/thumbs/437727af0-1.jpg",
+        id: 10,
+        title: "God of Wonders (2008)",
+        duration: "1:25:02",
+        postedBy: "eternityready"
     }
 ]

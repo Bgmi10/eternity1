@@ -1,8 +1,10 @@
 export default function DownloadApp() {
   return (
-    <div className="py-8 mt-10 mb-52 bg-gradient-to-t from-gray-400/20 via-black to-black text-white">
-      <div className="container mx-auto px-4 md:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between gap-12">
-        
+    <div className="lg:py-8 lg:mt-2 mt-2 mb-14 text-white">
+      <div className="container mx-auto px-4 md:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between lg:gap-12 gap-6">
+            <h2 className="text-3xl font-bold text-white text-center lg:hidden block">
+              Available for you to enjoy on <span className="text-red-600">any device.</span>
+            </h2>
         {/* Left side - Image */}
         <div className="lg:w-1/2 flex justify-center lg:justify-end">
           <img 
@@ -15,7 +17,7 @@ export default function DownloadApp() {
         {/* Right side - Content */}
         <div className="lg:w-1/2 space-y-8">
           <div className="space-y-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-white">
+            <h2 className="text-4xl font-bold text-white hidden lg:block">
               Available for you to enjoy on <span className="text-red-600">any device.</span>
             </h2>
             

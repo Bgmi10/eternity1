@@ -8,7 +8,7 @@ export default function DiscoverContent() {
     return(
         <div>
            {/* Content Categories Section */}
-          <section className="py-16">
+          <section className="lg:py-10 py-0">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <motion.div 
                 className="text-center mb-16"

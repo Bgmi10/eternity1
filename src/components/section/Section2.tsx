@@ -1,6 +1,6 @@
 "use client"
 import type React from "react"
-import { Star, FlameIcon as Fire, ChevronLeft, ChevronRight } from "lucide-react"
+import { FlameIcon as Fire, ChevronLeft, ChevronRight } from "lucide-react"
 import { motion, useAnimationControls } from "framer-motion"
 import { useState, useRef, useEffect } from "react"
 interface Data {
@@ -10,7 +10,6 @@ interface Data {
 }
 
 export default function Section2({ data }: { data: Data[] }) {
-  const [hoveredId, setHoveredId] = useState<number | null>(null)
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const [showLeftArrow, setShowLeftArrow] = useState(false)
   const [showRightArrow, setShowRightArrow] = useState(true)
@@ -101,22 +100,16 @@ export default function Section2({ data }: { data: Data[] }) {
       {/* Header with badge */}
       <div className="flex items-center justify-between">
         <div className="flex flex-col">
-          <h2 className="font-bold  text-xl lg:text-2xl bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent flex items-center gap-2">
+          <h2 className="font-bold  text-xl lg:text-2xl bg-gradient-to-r from-gray-100 to-gray-600 via-gray-200 bg-clip-text text-transparent flex items-center gap-2">
             Most Watched
-            <div className="inline-flex items-center justify-center lg:mt-1">
-              <div className="relative">
-                <Star className="h-5 w-5 text-amber-400 absolute animate-ping opacity-75" />
-                <Star className="h-5 w-5 text-amber-400 relative" />
-              </div>
-            </div>
           </h2>
         </div>
 
         {/* New badge */}
         <motion.div
-          className="bg-gradient-to-r from-amber-500 to-red-500 text-white lg:px-3 lg:py-1 px-1 py-1 rounded-full text-sm font-medium flex items-center gap-1 shadow-lg"
+          className="bg-gradient-to-r from-red-600 to-red-600 text-white lg:px-3 lg:py-1 px-1 py-1 rounded-full text-sm font-medium flex items-center gap-1 shadow-lg"
         >
-          <Fire className="h-4 w-4" />
+          <Fire className="h-4 w-4 text-amber-500" fill="#FFBF00" />
           <span>New Arrivals</span>
         </motion.div>
       </div>
@@ -129,7 +122,7 @@ export default function Section2({ data }: { data: Data[] }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute left-0 top-30 lg:top-40 -translate-y-1/2 z-20 bg-black/80 hover:bg-black text-white rounded-full p-2 shadow-lg -ml-4 backdrop-blur-sm"
+            className="absolute left-0 top-30 lg:top-30 -translate-y-1/2 z-20 bg-black/80 hover:bg-black text-white rounded-full p-2 shadow-lg -ml-4 backdrop-blur-sm"
             onClick={scrollLeft20}
           >
             <ChevronLeft className="h-6 w-6" />
@@ -142,7 +135,7 @@ export default function Section2({ data }: { data: Data[] }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute right-0 top-30 lg:top-40 -translate-y-1/2 z-20 bg-black/80 hover:bg-black text-white rounded-full p-2 shadow-lg -mr-4 backdrop-blur-sm"
+            className="absolute right-0 top-30 lg:top-30 -translate-y-1/2 z-20 bg-black/80 hover:bg-black text-white rounded-full p-2 shadow-lg -mr-4 backdrop-blur-sm"
             onClick={scrollRight20}
           >
             <ChevronRight className="h-6 w-6" />
@@ -151,10 +144,10 @@ export default function Section2({ data }: { data: Data[] }) {
 
         {/* Scroll gradient indicators */}
         <div
-          className={`absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-black/80 to-transparent z-10 pointer-events-none transition-opacity duration-300 ${showLeftArrow ? "opacity-100" : "opacity-0"}`}
+          className={`absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-black/90 to-transparent z-10 pointer-events-none transition-opacity duration-300 ${showLeftArrow ? "opacity-100" : "opacity-0"}`}
         />
         <div
-          className={`absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-black/80 to-transparent z-10 pointer-events-none transition-opacity duration-300 ${showRightArrow ? "opacity-100" : "opacity-0"}`}
+          className={`absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-black/90 to-transparent z-10 pointer-events-none transition-opacity duration-300 ${showRightArrow ? "opacity-100" : "opacity-0"}`}
         />
 
         {/* Main scroll container */}
@@ -182,44 +175,19 @@ export default function Section2({ data }: { data: Data[] }) {
                 scale: 1.05,
                 transition: { duration: 0.2 },
               }}
-              onHoverStart={() => setHoveredId(item.id)}
-              onHoverEnd={() => setHoveredId(null)}
             >
-              {/* Poster Image with gradient overlay */}
-              <div className="relative">
+             <div className="relative">
                 <img
                   src={item.posterPath}
                   alt={item.title || `Item ${item.id}`}
                   className="lg:w-full sm: w-[170px] h-52 object-cover shadow-md"
                   loading="lazy"
                 />
+               
                 <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/0 to-black/90 transition-all duration-300" />
+              
               </div>
-
-              {/* Ranking Number - Top Left with design elements */}
-              <div className="absolute top-2 left-1 lg:top-3 lg:left-3 z-10">
-                <div className="relative">
-                  {/* Background circle with glow effect */}
-                  <div
-                    className={`absolute inset-0 rounded-full bg-amber-500 blur-md opacity-40 scale-125 transition-opacity duration-300 ${
-                      hoveredId === item.id ? "opacity-70" : "opacity-40"
-                    }`}
-                  />
-
-                  {/* Main number container */}
-                  <div className="relative flex items-center justify-center lg:w-8 lg:h-8 h-6 w-6 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full shadow-lg border-2 border-white/20">
-                    <span className="font-extrabold text-xl lg:text-2xl text-white">{item.id}</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Title at bottom with improved visibility */}
-              {item.title && (
-                <div className="absolute bottom-0 lg:bottom-0 left-0 right-0 p-4 text-white transform transition-transform duration-300 ">
-                  <p className="font-medium truncate text-shadow hover:translate-y-0 translate-y-2">{item.title}</p>
-                 
-                </div>
-              )}
+              <p className="font-medium truncate text-shadow text-white mt-1">{item.title}</p>
             </motion.div>
           ))}
 

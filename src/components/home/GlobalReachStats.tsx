@@ -2,15 +2,15 @@ import { motion } from "framer-motion";
 
 export default function GlobalReachStats() {
   return (
-    <div className="py-24 bg-gradient-to-b ">
+    <div className="lg:py-14 bg-gradient-to-b py-14">
       <div className="container mx-auto px-4">
         
         {/* Section header with refined typography */}
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Our Global <span className="text-red-600">Impact</span>
+        <div className="text-center mb-10 lg:mb-16">
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+            Our Global Impact
           </h2>
-          <div className="w-24 h-1.5 bg-red-600 mx-auto mb-8"></div>
+          <div className="h-1 w-24 bg-red-600 mx-auto mb-8"></div>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
             Delivering premium entertainment to millions of viewers across the globe, powered by innovation and excellence.
           </p>
@@ -70,7 +70,7 @@ export default function GlobalReachStats() {
         </div>
         
         {/* Optional achievement banner with gradient animation */}
-        <div className="mt-16 bg-gradient-to-r from-gray-400/20 via-black to-gray-400/20 p-6 rounded-lg max-w-4xl mx-auto text-center">
+        <div className="lg:mt-16 mt-10 bg-gradient-to-r from-gray-400/20 via-black to-gray-400/20 p-6 rounded-lg max-w-4xl mx-auto text-center">
           <p className="text-white text-lg"> Join us on this inspiring journey where faith meets the future of streaming.</p>
         </div>
       </div>

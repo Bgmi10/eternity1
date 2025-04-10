@@ -19,8 +19,8 @@ export default function Home() {
       <Section2 
        //@ts-ignore
       data={mostWatched} />
-      <PopularContent title={"Popular Content"}/>
       <MultiItemSlider title="Newest Stuff"/>
+      <PopularContent title={"Popular Content"}/>
       <DiscoverContent />
       <GlobalReachStats />
       <DownloadApp />

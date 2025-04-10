@@ -6,9 +6,9 @@ export default function PopularContent({ title }: { title: string }) {
     return(
         <div className="mb-10">
           <section className="py-6 bg-black">
-            <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-9">
+            <div className="max-w-9xl mx-auto px-4 sm:px-6 lg:px-9">
               <div className="flex items-center justify-between mb-10">
-              <h2 className="text-xl lg:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-100 via-gray-300 to-gray-500 drop-shadow-lg">
+              <h2 className="text-xl lg:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-100 via-gray-300 to-gray-500 drop-shadow-lg">
               {title}
               </h2>
                 <a href="#" className="text-teal-500 font-medium flex items-center gap-1">

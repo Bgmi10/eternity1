@@ -83,22 +83,17 @@ const MultiItemSlider = ({ title }: { title: string }) => {
 
   return (
     <motion.div 
-      className="bg-gradient-to-br from-gray-400/20 via-black py-16"
+      className="lg:py-12 py-4"
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.25 }}
     >
-      <div className="container mx-auto px-6 max-w-6xl">
-        <motion.h2 
-          className="text-3xl md:text-5xl font-bold text-white mb-10 text-center"
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+       <h2 
+          className="font-bold lg:mb-7 mb-6 ml-6 text-xl lg:text-2xl bg-gradient-to-r from-gray-100 to-gray-600 via-gray-200 bg-clip-text text-transparent flex items-center gap-2"
         > 
           {title}
-        </motion.h2>
-
-        {/* Mobile Slider (4 items per slide) */}
+        </h2>
+      <div className="container mx-auto lg:max-w-9xl lg:px-0 px-7">       
         <motion.div 
           className="relative block md:hidden"
           initial={{ opacity: 0 }}
@@ -225,18 +220,18 @@ const MultiItemSlider = ({ title }: { title: string }) => {
         </div>
       
         {/* Navigation - Visible on all screen sizes */}
-        <div className='flex justify-center items-center mt-10 space-x-6'>
+        <div className='flex justify-center items-center mt-6 space-x-4'>
           <motion.button 
             onClick={handlePrevClick}
-            className="bg-white/10 hover:bg-white/20 text-white rounded-full p-2 md:p-3 transition-all duration-300"
+            className={"bg-white/10 hover:bg-white/20 text-white rounded-full p-2 md:p-3 transition-all duration-300"}
             aria-label="Previous slide"
           >
-            <FaChevronLeft className="text-xl md:text-2xl" />
+            <FaChevronLeft className="text-xl md:text-xl" />
           </motion.button>
           
           <motion.a 
             href="#" 
-            className="px-4 py-2 md:px-8 md:py-3 border border-gray-400/40 text-white rounded-lg font-semibold transition-colors text-sm md:text-base"
+            className="px-4 py-2 md:px-6 md:py-2 border border-gray-400/40 text-white rounded-lg font-semibold transition-colors text-sm md:text-base"
           >
             View All
           </motion.a>
@@ -246,7 +241,7 @@ const MultiItemSlider = ({ title }: { title: string }) => {
             className="bg-white/10 hover:bg-white/20 text-white rounded-full p-2 md:p-3 transition-all duration-300"
             aria-label="Next slide"
           >
-            <FaChevronRight className="text-xl md:text-2xl" />
+            <FaChevronRight className="text-xl md:text-xl" />
           </motion.button>
         </div>
       </div>

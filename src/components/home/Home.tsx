@@ -6,7 +6,11 @@ import DownloadApp from "../DownloadApp"
 import GlobalReachStats from "./GlobalReachStats";
 import DiscoverContent from "./DiscoverContent";
 import PopularContent from "./PopularContent";
+import Available from "./Available";
 import MultiItemSlider from "./MultiGridSlider";
+import TopTvChannel from "./TopTvChannel";
+import TopMusic from "./TopMusic";
+import Radio from "./Radio";
 
 export default function Home() {
 
@@ -19,8 +23,13 @@ export default function Home() {
       <Section2 
        //@ts-ignore
       data={mostWatched} />
+      <TopMusic />
+      <TopTvChannel />
+      <Radio />
       <MultiItemSlider title="Newest Stuff"/>
+      
       <PopularContent title={"Popular Content"}/>
+      <Available />
       <DiscoverContent />
       <GlobalReachStats />
       <DownloadApp />
